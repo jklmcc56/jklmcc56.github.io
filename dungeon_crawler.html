@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset = "UTF-8">
+  <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+  <link rel = "stylesheet" href = "https://www.w3schools.com/w3css/3/w3.css">
+  <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <title>Jackson Luna-McCrocklin's Personal Website</title>
+  <style>
+    html {
+      overflow-y: scroll;
+      background-color: black;
+      background-image: url("Images/PCB Background.png");
+      background-size: 50%;
+      background-attachment: fixed;
+    }
+
+    body {
+      height: 100%;
+      margin: 0 auto;
+      max-width: 800px;
+      background-color: white;
+    }
+
+    p {
+      width: 700px;
+      padding-left: 50px;
+    }
+
+    .accordion {
+      background-color: #eee;
+      color: #444;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      max-width: 800px;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+      transition: 0.4s;
+    }
+
+    .active, .accordion:hover {
+      background-color: #ccc;
+    }
+
+    .accordion:after {
+      content: '\002B';
+      color: #777;
+      font-weight: bold;
+      float: right;
+      margin-left: 10px;
+    }
+
+    .active:after {
+      content: "\2212";
+    }
+
+    .panel {
+      padding: 0 18px;
+      background-color: white;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+    }
+
+    .w3-dropdown-hover:hover .w3-dropdown-content {
+      display: block;
+    }
+
+    .slides {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+    }
+
+    #footer {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="w3-bar w3-dark-gray">
+    <a href="index.html" class="w3-button w3-bar-item">Home</a>
+    <div class="w3-dropdown-hover w3-right">
+      <button class="w3-button">Projects</button>
+      <div class="w3-dropdown-content w3-bar-block w3-border" style="right:20;">
+        <a href="dungeon_crawler.html" class="w3-bar-item w3-button">The Dungeon Crawler</a>
+        <a href="personal_website.html" class="w3-bar-item w3-button">Personal Website</a>
+      </div>
+    </div> 
+  </div>
+  
+  <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16 w3-container">The Dungeon Crawler</h2>
+
+  <div class = slides>
+    <img class="slide w3-animate-fading" src="Images/Opening Scene.jpg">
+    <img class="slide w3-animate-fading" src="Images/Action Scene.jpg">
+    <img class="slide w3-animate-fading" src="Images/Inside.jpg">
+    <img class="slide w3-animate-fading" src="Images/Presentation Poster Cropped.png">
+  </div>
+
+  <div id="project_description" class="w3-container w3-padding">
+    <h3 class="w3-border-bottom w3-border-light-grey">Project Description</h3>
+    <p>
+      The Dungeon Crawler is the combination of an electronic game board and companion app that is used to visualize and simulate 
+      the dungeon crawler experience commonly seen in role-playing games such as Dungeons and Dragons. The Dungeon Crawler Board features 
+      a 16x16 hexagonal 2D map used for playing the game, with each hex featuring a Hall Effect sensor for tracking the tokens, and a 
+      WS2812B pixel used to indicate different hex tiles and status effects. A 4x4 keypad and 2.2" LCD is used to facilitate the gameplay, 
+      displaying prompts and requesting responses. The board used to feature a USB to port the character and map information from the 
+      companion app, but unfortunately the USB part broke. A fix is coming soon. The board is powered via an outlet. The Hall Effect 
+      sensors are read through I2C GPIO expanders, and the WS2812B pixels are connected in series and use DMA/PWM to send and update 
+      information for light displays. The keypad operates on IO interrupts, and the LCD uses SPI to receive display data from the 
+      microcontroller. The board uses an STM32F405 as its microcontroller and used STM32CubeIDE and C++ for the firmware and game logic.
+    </p>
+    <p>
+      The Dungeon Crawler App allows for the DM to customize maps and characters. The character customization currently features two 
+      classes, Fighter and Ranger, though more will be added. The standard attributes and stats can then be inputted for each player 
+      and monster. The map customizer then grants the DM the ability to customize a dungeon, placing walls and monsters as obstacles, 
+      chests as rewards, and the initial position of the players prior to the game start. The app was developed in Unity using C#.
+    </p>
+    <p>
+      In the game itself, the DM is able to import the map (given the USB works, if not, then a fix will be added), or choose from three 
+      predefined maps. The gameplay allows for players to explore the dungeon, where given their speed and visibilty, will only be able 
+      to interact with a only portion of the map at a time. Once a player spots a monster, the monster is then added to the turn order, 
+      and free to move and attack based on how the DM's desires. Both the players and the DM can see the results of attacking and defeating 
+      their foes, looting chests, and how the game expands and updates in real time to the decisions a person makes. Though only a prototype, 
+      I hope to continue expanding the abilities of the game to simulate the dungeon crawling experience, adding in more classes, weapons, 
+      and even an ability to customize and explore different levels of a map.
+    </p>
+  </div>
+
+  <div id="contribution" class="w3-container w3-padding">
+    <h3 class="w3-border-bottom w3-border-light-grey">Personal Contribution</h3>
+    <p>
+      As the designated Hardware Lead for The Dungeon Crawler, I focused my work on the hardware components of this project, as well as 
+      the packaging. Prior to the semester, I worked ahead and developed pathing algorithms for our hexagonal map, as well as developed 
+      the outline of our class system for both the map and characters. At the beginning of the semester, I prototyped different parts 
+      that would live on our PCBs, including the LCD and keypad, and I helped prototype the Hall Effect sensors. After the prototyping 
+      was completed, I designed the main PCB that would house the microcontrontroller, LCD, and keypad, as well as the inputs 
+      for the power, USB, and MicroSD reader. Once the PCBs were finished and delivered, I soldered the majority of the main PCB, as well 
+      as helped with the other 16 PCBs used for the hexagonal grid. Later, I designed the packaging for the project, sending it to be 
+      assembled offsite due to time constraints. For the firmware of our project, I developed the code for the LCD and keypad, and I 
+      heavily contributed to the code for our gameplay. Specifically, I designed the majority of the flowchart and state machine logic, 
+      finished my work on the pathing algorithms, as well as developed a line of sight algorithm for field of view, and debugged portions 
+      of the combat code and character initialization. Towards the end of the semester I helped my other teammates with their portions of 
+      the project, including debugging the companion app, assembling the packaging, and adding ranged combat, which was a stretch goal.
+    </p>
+    <p>
+      Throughout the semester I did several reports and presentations, which can be seen below. For more specifics on my work, 
+      please consult my project journals, also located below.
+    </p>
+  </div>
+
+  <div id="reports" class="w3-container w3-padding">
+    <h3 class="w3-border-bottom w3-border-light-grey">Individual Reports</h3>
+    <p>
+      <a href="Files\A6 - Mechanical Overview.pdf">Mechanical Overview (A6)</a><br>
+      <a href="Files\A12 - User Manual.pdf">User Manual (A13)</a><br>
+    </p>
+    <h3 class="w3-border-bottom w3-border-light-grey">Team Reports</h3>
+    <p>
+      <a href="Files\A0 - Initial Project Proposal.pdf">Initial Project Proposal (A0)</a><br>
+      <a href="Files\A1 - Final Project Proposal.pdf">Final Project Proposal (A1)</a><br>
+      <a href="Files\A2 - Functional Specification.pdf">Functional Specification (A2)</a><br>
+      <a href="Files\A7 - Bill of Materials.xlsx">Bill of Materials (A7)</a><br>
+      <a href="Files\A13 - ABET Senior Design Report.pdf">ABET Senior Design Report (A13)</a><br>
+    </p>
+  </div>
+
+  <div id="cad" class="w3-container w3-padding">
+    <h3 class="w3-border-bottom w3-border-light-grey">CAD Files</h3>
+    <p>
+      <a href="Files\Packaging.zip">Packaging</a><br>
+    </p>
+  </div>
+
+  <div id="pcb" class="w3-container w3-padding">
+    <h3 class="w3-border-bottom w3-border-light-grey">PCB Files</h3>
+    <p>
+      <a href="Files\Hardware.zip">Main PCB Schematic</a><br>
+      <a href="Files\GerberMicro.zip">Main PCB Gerber</a><br>
+    </p>
+  </div>
+
+  <div id="presentation" class="w3-container w3-padding">
+    <h3 class="w3-border-bottom w3-border-light-grey">Presentation Materials</h3>
+    <p>
+      <a href="Files\Team 01 - Midterm Design Review Presentation.pptx">Midterm Design Review Slides</a><br>
+      <a href="Files\Team 01 - Final Presentation.pptx">Final Presentation Slides</a><br>
+      <a href="Files\Team 01 - Final Presentation Video.mp4">Final Presentation Video</a><br>
+      <a href="Files\Presentation Poster.pdf">Final Presentation Poster</a><br>
+    </p>
+  </div>
+
+  <div id="code" class="w3-container w3-padding">
+    <h3 class="w3-border-bottom w3-border-light-grey">Code</h3>
+    <p>
+      <a href="https://github.com/jklmcc56/Dungeon-Crawler">Github Repository</a><br>
+      <a href="https://github.com/jklmcc56/Dungeon-Crawler/tree/Dungeon-Crawler-Board">Dungeon Crawler Board Branch</a><br>
+      The Dungeon Crawler App branch will be added soon.
+    </p>
+  </div>
+
+  <div id="references" class="w3-container w3-padding">
+    <h3 class="w3-border-bottom w3-border-light-grey">References</h3>
+    <p>
+      <a href="Files\AmpConnectors_Datasheet.pdf">Amp Connector</a><br>
+      <a href="Files\DCPowerJack_Datasheet.pdf">DC Power Jack</a><br>
+      <a href="Files\EMI_Datasheet.pdf">EMI</a><br>
+      <a href="Files\HallEffect_Datasheet.pdf">Hall Effect Sensor</a><br>
+      <a href="Files\IOExpander_Datasheet.pdf">I2C IO Expander</a><br>
+      <a href="Files\Keypad_Datasheet.pdf">Keypad</a><br>
+      <a href="Files\LCD_Datasheet.pdf">LCD</a><br>
+      <a href="Files\LDO_Datasheet.pdf">LDO</a><br>
+      <a href="Files\MicroB_Datasheet.pdf">MicroB USB</a><br>
+      <a href="Files\MicroSD_Datasheet.pdf">MicroSD Reader</a><br>
+      <a href="Files\STM32F405xx_Datasheet.pdf">STM32F405</a><br>
+      <a href="Files\WS2812B_Datasheet.pdf">WS2812B</a><br>
+    </p>
+  </div>
+
+  <div id="progress_journals" class="w3-container w3-padding">
+    <h3 class="w3-border-bottom w3-border-light-grey">Progress Journals</h3>
+    <p>
+      Below is my work on the project separated into weeks. Above each journal is the date, the start time, and the time I spent for 
+      that journal's work. Included in some of the journals are images of my results and code, zipped folders of code, and links to 
+      any outside materials that I used as research. The journals are taken from my work in Senior Design, where I worked with three 
+      other members, who are referenced throughout the journals, but their direct work is not shown.
+    </p>
+    
+    <button class = "accordion">Week 15</button>
+    <div class = "panel">
+      <b>Date Reported:</b> 4/19/2024<br>
+      <b>Start Time:</b> 11:00 a.m.<br>
+      <b>Work Time:</b> 2.5 Hours<br>
+      <p>
+        When I came into lab, Grace and Neil notified me that the USB was no longer working, and most likely due to a bad soldering 
+        connection. I helped Neil remove a solder bridge and we tested the USB, which did not work when we tried to send the map. 
+        Neil noticed that two of the pins were not soldered, and I realized that two of the leads were broken, so I got a pointier 
+        tip and soldered the pins down. After that, the USB worked, though the connection was not stable and would sometimes require 
+        someone to adjust the cable. When we attached the box back together, I noticed that the LCD would not work sometimes, most 
+        likely due to a faulty cable. We had to be very careful and constantly check that the USB and the LCD were working when 
+        putting the final touches on the box. Our team had to get the demo pushed back a little bit since our USB randomly broke, but 
+        we were able to finally demo it, and it all went well, except the USB cable did have to get jostled for it to work. Before 
+        leaving, I applied two applications of the isopropanol to the acrylic to clear off the glue, which does appear to be coming 
+        off. The plan is to do the final touches on the board later, but before Spark Challenge.<br>
+      </p>
+
+      <b>Date Reported:</b> 4/18/2024<br>
+      <b>Start Time:</b> 1:30 p.m.<br>
+      <b>Work Time:</b> 7 Hours<br>
+      <p>
+        I went with Grace to ask Chuck if he had any glue for acrylic material. He gave us a tube, which we apparently had a bottle 
+        of, and we tested using the glue on some small hex pieces Grace had printed on the leftover piece of acrylic from the cut. 
+        We found that using thick lines of glue was better, as it stuck the pieces together and it showed up less splotchy on the 
+        other side of the acrylic. We then fit the panel into the indentation of the box, which required us to sand the bottom right 
+        corner as a there was a small part that was not fully pressed in. We then tried attaching the big hex grid onto the acrylic, 
+        lining it up on the box using pencil markings. Grace and I were unable to get the glue to stick, as it very easily came off, 
+        and we did not line it up. This left it to leave stains on the acrylic. We washed off the glue on the hex dividers, which 
+        came off pretty well, but the glue on the acrylic did not fully come off. We lining up the hex dividers again, but as I was 
+        testing the magnetic sensors to see if they were lining up, they slid off the plastic onto the PCBs below, hitting some pins 
+        (the side board was taken off to better line it up). This caused the board to reset, and when we tried to view the map again, 
+        the second row would not work. The first dozen or so lights were the wrong colors, and the remaining lights were off. I 
+        tried to fix this in software, as I noticed that the issue happened when the pixels were off and then turned on; when they 
+        were updated, the issue did not occur. I tried clearing the map for displaying it, but it did not work. I then tried to send 
+        the map twice and see if that worked, but I found that it still did not work, as occasionally the second row would still be 
+        wrong, though not as frequent as earlier. Landon ended up fixing the issue by removing the green data wire between the 
+        boards and the white wire connecting the main PCB to the affected PCB and replacing the wires. I do not know why this 
+        worked. Grace and I then went through the code, as we had not looked at the changes Neil and Landon made. We found lots of 
+        small issues, such as text being placed in the y-axes, screens not being cleared, and wrong delays between switching screens. 
+        The first major issue we encountered was Landon's implementation of setting a monster active once it was spotted. He did this 
+        in the FOV function, which was unnecessary, as it did not need to be run every time FOV ran. We changed it by implementing it 
+        in Game_Loop and in movementMode(), where if it was a player's turn, and there was an inactive monster in their field of view, 
+        it would pause the player's turn and notify that a monster was spotted. It was then asked for the monster's token to place on 
+        its flashing hex. After that, it would go back to the player's turn. This means that even if a monster has a higher 
+        initiative, and it was immediately spotted by a player, the player would still go first, as the monster only gets activated 
+        once it is seen. One of the major issues we fixed was the option to move, which would be available even when all areas were 
+        blocked and the character could not move. We fixed this by finding the available move hexes in Game_Loop and created and 
+        checked a variable called “possibleMove” to 1 if it was not empty. We updated the locations, matching the logic to 
+        possibleAction implemented by Landon. Grace and I then changed how the chests worked, modifying it so when a player opens a 
+        chest, it gives them a random amount of gold, rather than doing what Landon did, which was only giving one piece of gold to 
+        the players. Grace and I then discussed whether or not initiative should be defined at the game start for the monsters, since 
+        it would reveal to the players how many monsters there were. We changed it so only players defined their initiative as the 
+        beginning of the game, and the initiative of the monsters could be defined in the application. As we were debugging all of 
+        this, I intermittently applied isopropanol to the spots on the acrylic that had glue stains and used paper towels to remove 
+        them. I have done a dozen applications, and while progress is being made, it is slow.<br>
+        <a href="Code\Final Touches.zip">Code For This Journal</a><br>
+      </p>
+
+      <b>Date Reported:</b> 4/17/2024<br>
+      <b>Start Time:</b> 12:15 p.m.<br>
+      <b>Work Time:</b> 2 Hours<br>
+      <p>
+        I completed my individual portion of A13, as well as parts c, d, and e of the team portion. I also made small edits throughout the report, checking for grammar. Results of 
+        this work can be seen in the report which will be turned in and uploaded to our website.
+      </p>
+      
+      <b>Date Reported:</b> 4/16/2024<br>
+      <b>Start Time:</b> 1:30 p.m.<br>
+      <b>Work Time:</b> 4 Hours<br>
+      <p>
+        I went into the lab and helped Grace glue the hex dividers to our plastic sheet. This involved marking the placements and lining up the dividers on the sheet, marking where 
+        it needed to be lined up with a pencil, and then actually gluing it. We covered the edges and part of the middle of the hex dividers to make sure it does not come off. We 
+        flipped the dividers onto the sheet, but we found that the glue showed through on the other side and it does not look good. Grace had tested the glue on the sheet to see if 
+        it would show through, but she did not test to see if the hex dividers would make the glue show through, which it did. We asked Joe if there was a way to remove the glue, 
+        but there was not, since we used super glue. We then asked Chuck, and he said the only way was to use a file and a mallet to pry it off. He did one corner, but part of the 
+        dividers stayed stuck onto the sheet, so we did not continue further. Chuck tried to help us find a sheet, but there were none available that were frosted and fit our 
+        dimensions. Chuck did have some clear polycarbonate that would work, except it would need to be frosted. We tested with a small sheet, and it did not flood the lights at 
+        all, though it did activate the magnetic sensor. While Grace checked to see if there was a spot on campus that could frost the sheet, I measured the dimensions of the inset 
+        since Eric had cut the section just a tad too big. The measurements I got were 20.375" x 17.75". I also asked Joe if there was a place in town that would have the materials, 
+        and he said he could not think of one. Grace could not find a place that would frost a sheet, but she did find a frosted acrylic piece that would fit our dimensions, 
+        provided it was cut, at Menards. We went there and found the sheet. On the drive, Grace and I figured out a plan to speed up the process of this while also guaranteeing we 
+        could demo. We would keep the old sheet with the dividers attached for our demo, but we would try to get new dividers printed so we could attach them to the new sheet. We 
+        could also have Chuck or the Bechtel Center cut our sheet so it fits, but first I have to verify that the sheet will flood the lights properly, as well as work with our 
+        magnetic sensors. The new sheet and dividers would hopefully be done in time for the demo, but they should at least be done in time for Spark Challenge. Landon and Neil 
+        accidentally disconnected a green wire while working on the PCBs, so I soldered it for them.<br>
+        <img src="Images\Bad Glue.jpg" width="500" height="500"></img><br>
+        <img src="Images\Frosted Acrylic.jpg" width="500" height="400"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 4/15/2024<br>
+      <b>Start Time:</b> 11:15 a.m.<br>
+      <b>Work Time:</b> 7 Hours<br>
+      <p>
+        Landon was working on marking the holes, so I told him about using a drill block to ensure our piece of plywood does not break since it is thin. I then began working on 
+        merging the code I had worked on yesterday with the code that Neil and Landon have. I first merged with Neil's branch, and there was one conflict in displayFuncs.cpp, in 
+        which I accepted the incoming change. I spent a lot of time cleaning up the code, making it look nice by spacing things out, clearing up random empty lines, and getting rid 
+        of code that is no longer needed. I then went through Landon's code for Game_Loop() and I changed the LCD function calls such that it cleared the screen and then set the 
+        half second delay after a text prompt was done. This was to give consistency in the code and make sure there were not random inconsistent delays when changing the text on 
+        the screen. If there was a situation where text was displayed, then it changed to a different screen without calling another function, I added a delay of two seconds since 
+        it gives the user enough time to read the text before the LCD flashes a different line. Landon created a function called getRoll() that took in a string of the type of roll 
+        it wanted and then returned the value, so I changed PlayingMode() such that I called his function instead of doing my long string of code to get a roll, where the input for 
+        the function was "Initiative". In his getRoll() function I changed his initiative variable to "roll_string" to give it a more generalized name. Grace grabbed my code, but 
+        found there were small errors where I named something LCD_Delay instead of HAL_Delay, and I did not name all variables of initiative to roll_string. While Grace was testing 
+        her code, I noticed an error where the LCD would skip ahead in the code because the code read a key value that was not null when it should not have, so I modified the code 
+        such that anytime it asked for a key press, I set key equal to null right before the while loop for the key press, so it gives it the least amount of time for a mistake to 
+        occur. Grace and I integrated the code onto her laptop, and we began to add the FOV display throughout the code. We ran through the logic, and we decided to change 
+        FOVToBuffer() such that it modified an incoming map buffer by setting all indices to zero in which the player cannot see that value. In states.cpp, we modified the first 
+        use of FOV in Game_Loop() so it accommodates this new change. We then modified MovementMode() so that the first time it displays the map it accounts for the FOV. We do not 
+        want to change further since we want to change this small implementation before expanding it to the rest of the code. Landon finished drilling the holes in the plywood and 
+        told us that a few wires between the boards got disconnected, so I soldered those on, then Grace and I tried to connect the boards back together so we could test them, but 
+        two of the connectors would not fit, so I marked them and Grace recut the wood. We got all the PCBs on and connected, and then tested the code. For the FOV, the first hex 
+        kept lighting up even though it was not in the line of sight. This was because when the code drew a line from the starting hex to itself, it registered that as the first 
+        hex for whatever reason, so we added a check to just ignore the hex in the FieldOfView() function. The first FOV function worked prior to the character options being 
+        selected, so we added the function calls to every time displayMap was called in Game_Loop() and the functions called inside Game_Loop(). One mistake we made was that we did 
+        not reset the mapBuffer from the map, so we added that function call prior to finding the view vector. We tested the code, and the map displayed as expected. There were 
+        other issues with the LCD and some of the game logic, but Neil and Grace looked over that.<br>
+        <a href="Code\FOVWorks.zip">Code For This Journal</a><br>
+        <img src="Images\FOV Pixels.jpg" width="500" height="400"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 4/14/2024<br>
+      <b>Start Time:</b> 1:15 p.m.<br>
+      <b>Work Time:</b> 4 Hours<br>
+      <p>
+        Since we included field of view and visibility as part of our project, I helped Neil in completing a rudimentary function just using VisualCode and small tests of a 5x5 
+        map. I looked at the hexagon website I had looked at last semester to start the project. The website has a section detailing how to implement a field of view algorithm, 
+        which consists of running a line drawing algorithm to every hex within a certain distance. The line drawing involves implementing a few different functions that find the 
+        distance between two hexes, finding the hex, and adding it to a vector. I implemented the function, inputting a starting hex and an ending hex that was adjacent, and I 
+        tested it. It did not work. The reason was that my old code did not fully implement all parts of the function, so I went through and added the lerp functions, the rounding 
+        function, and the conversion function, since our hexes use axial coordinates, and most of the functions used cube coordinates. The websites detail how to do these 
+        conversions. I tested it again, and my output showed that both hexes were visible, which was correct. I then changed the ending hex to be not adjacent, and the program 
+        correctly outputted the line of hexes it touches. I then changed the hexes surrounding the starting hex to be walls, and added a line that only added hexes that were 
+        passable to the vector, and it worked again. I then began my work on the field of view algorithm, which essentially was an integral of the line drawing algorithm, where I 
+        ran the line drawing algorithm to all hexes that were within a certain range. I tested it, and I got a segmentation fault. This was because in my line drawing algorithm I 
+        forgot to add a check to see if the hexagon was null, so I added that and it gave me an output. The test I ran was the one where the walls surround a starting hex, but my 
+        output showed a hex that should not be able to be seen. Neil looked over my code, and suggested that the rounding part of the HexRound function was not correctly rounding 
+        it, so I printed out the coordinates, and we found that when both q and r coordinates ended in 0.5, it did not add certain hexes that led up the offending hexes, meaning it 
+        did not check hexes that were walls. The website said that if this issue occurred, we should add a small epsilon value so that the code pushed the line in a direction to 
+        capture the hexes that are actually present in the line of sight. We added the small values to the q, r, and s coordinates, making sure it still added up to 0 (since that 
+        is how cube coordinates work), and we tested it again. The output correctly did not show the hexes that could not be seen. We then changed the check that the hex is 
+        passable to a hex that is a wall, since we decided that a character should be able to see a hex beyond another character or chest, and only walls should block visibility. 
+        Also, our output included redundancies, because duplicate hexes were added since all the hexes within a range were tested, so in the FieldOfView function, we changed it 
+        such that the lines were added into a set, and the set was converted back into the output vector so it got rid of the duplicates. It correctly printed out the visible 
+        hexes.<br>
+        <a href="https://www.redblobgames.com/grids/hexagons/#coordinates">Main Hexagon Website</a><br>
+        <a href="https://www.redblobgames.com/grids/hexagons/#rounding">Rounding Function</a><br>
+        <a href="https://www.redblobgames.com/grids/hexagons/#conversions">Conversion Function</a><br>
+        <a href="Code\FieldOfView.zip">Code For This Journal</a><br>
+      </p>
+
+      <b>Date Reported:</b> 4/13/2024<br>
+      <b>Start Time:</b> 2:00 p.m.<br>
+      <b>Work Time:</b> 0.5 Hours<br>
+      <p>
+        I finished my work on A12, setting up a mock assembly by putting in the standoff blocks in the board, setting the plywood on top, and then laying the hex grid and plastic 
+        top. We did not include the PCBs because they do not currently fit because the standoffs blocks are too tall, which we will have to adjust. I also put the keypad and LCD 
+        where they should be on the board, as well as the power and USB cord on the side. I also took a picture of the magnets since we recommend using them for our board. I added 
+        all the pictures, gave some short explanations where needed, made some small adjustments where I refer back to the pictures, and lastly I added a fifth FAQ concerning what 
+        happens when power is lost unintentionally. My work on A12 from the previous journal and this journal can be seen on Brightspace.<br>
+      </p>
+    </div>
+
+    <button class = "accordion">Week 14</button>
+    <div class = "panel">
+      <b>Date Reported:</b> 4/12/2024<br>
+      <b>Start Time:</b> 12:45 p.m.<br>
+      <b>Work Time:</b> 3 Hours<br>
+      <p>
+        I began working on A12, filling out the product description based on our users of people who play role-playing games, which came from our Functional Description Report. 
+        Because our product was not remotely close to being assembled, I asked Tyson for an alternate solution, and he said I could include any CAD, as well as mock the assembly 
+        and update the photos later for when it is actually done. I also talked with the course staff about the data line being pulled low to fix the issue with the first pixel to 
+        verify it would not mess up with any timing issues, and they said it should not. I then worked on the setup portion of the report, detailing getting the parts necessary to 
+        use the board, as well as verifying that the board turns on. I then worked on the usage section, but I had to wait for Grace to show me the application so I could explain 
+        all elements of it. In the meantime, I discussed with Neil about integrating my code and finding any issues with it, which he found none. Grace showed me the application 
+        and sent me photos of different parts of it, so I continued working on the report. I went in order of the flowchart, describing how to use the application, go through the 
+        different modes on the game board, uploading and viewing the map, initializing the characters, playing the game, and ending the game. Because not all of the code was 
+        written yet, I had to theorize how certain components would work, such as multiple targets for attacking or looting chests and being able to select a target by cycling 
+        through them on the keypad. I inserted the photos of the application, as well as added a photo of the keypad where I labeled what each key does, a photo of the ports on the 
+        main PCB and describing what they did, and adding a photo of the software flowchart as a reference for how the logic flows for the game board. I then added the 
+        troubleshooting section in the style of a Q&A, where I asked and answered questions about making the wrong map, the keypad not registering the right key pushes, the tokens 
+        not registering on the board, and the game not ending when it appearingly should. The results of all this work can be seen in my report which will be uploaded tomorrow. I 
+        cannot finish yet as other members are working on the code and packaging, thus I cannot mock a final assembly to show the full extent of what the board looks like. I also 
+        verified with the course staff that my usage steps had the correct level of detail, as I worried I was going too in-depth for our product.<br>
+      </p>
+
+      <b>Date Reported:</b> 4/11/2024<br>
+      <b>Start Time:</b> 8:30 p.m.<br>
+      <b>Work Time:</b> 1.5 Hours<br>
+      <p>
+        I picked up where Grace and I left off, and I went through the code to check for logic and control flow. I did not have the 
+        microcontroller to test, so all of my code changes are as of right now hypothetically correct. I changed the code in 
+        states.cpp and displayFuncs.cpp so that the LCD_Fillscreen and Hal_Delays are as minimal as possible, and also directly 
+        associated with the lines of code that modify the LCD. I also found different parts in the code where the key variable was 
+        not set back to null, causing the code to jump ahead based on the previous key push, so I added them throughout the code. 
+        The last major change I added was getting rid of the Game_Start function and putting that code at the end of Playing_Mode 
+        since the code will always end up there if it does not reach an error. This means that GAME_START_STATE can actually be 
+        associated with starting the game. Lastly, I made small changes to main.cpp that cleaned up the code and sectioned it off 
+        better.<br>
+        <a href="Code\Viewing Stats.zip">Code For This Journal and Previous Journal</a><br>
+      </p>
+
+      <b>Date Reported:</b> 4/11/2024<br>
+      <b>Start Time:</b> 12:45 p.m.<br>
+      <b>Work Time:</b> 6 Hours<br>
+      <p>
+        I picked up our newly cut panel from Chuck. Grace did the measurements for this new cut and asked for it to be cut. I then 
+        worked on fixing the boards that had bad soldering. To do this, I ran a test code that Landon provided, which turned all the 
+        lights red, and when a Hall Effect sensor was engaged, that pixel turned green. The boards could only be tested one timer at 
+        a time, otherwise, eight boards. The first half only had one error, which was a bad connection to a sensor, so I did the 
+        soldering for it again, tested it, and it worked. I then tested the second half of the boards, which resulted in all of the 
+        lights turning green. I removed the bottom six boards, only testing one pair of boards at a time. The first pair worked. I 
+        added the second pair, which did not light up. I had accidentally connected the boards wrong and missed a pin, so I fixed 
+        that, but the board still did not work. I removed the red connector and found that the blue wire was not all the way in, so 
+        I removed the wire, cut a new one at 1.5”, and put it back in the connector. After testing, it worked.. I tested the third 
+        pair, which had one sensor not working, so I soldered it again, tested it, and it worked. I finally added the last pair of 
+        boards, but it did not work. The first light on the second board of the pair was white, and the pixels following it did not 
+        light up. I used the multimeter to measure the voltages, and I discovered that the grounds on the second board's connectors 
+        measured as 2V. I removed the boards and inspected it, but I could not find a loose connection. I reconnected it, and I 
+        noticed that when I flexed the board in a certain way, it lit up correctly. I tested it with the magnet while flexing and 
+        found that all the sensors worked, meaning that this was an issue with the pixel. I removed the board again, inspected it 
+        once more, and found no errors. I switched out the connectors with the boards, as well as switched the board placement, but 
+        the issue persisted, which meant that the red connectors were not the issue. Landon had mentioned that sometimes the white 
+        connectors could look like they were soldered right, but they actually were not, so I redid the soldering for the white 
+        connectors, tested it one final time, and it all worked. I then tested the code for placing down the players prior to the 
+        game start in Playing_Mode(). The code worked, except that when entering the initiative, the 5 key showed up as a 3. In the 
+        interrupt for the key, where 5 should be defined it is a 3, so I changed it and it worked. I also got rid of the Clear_Map() 
+        function call in the Display_Map() function since we no longer need a software fix for the buggy pixels. The map updates 
+        very smoothly now, meaning we can do more advanced things for lighting. I then helped Grace integrate the USB code with the 
+        new states. We tested first with one player and one monster, but on the map it registered both as players. This was because 
+        in the application code Grace had hardcoded every character to be a player. After changing that, we tested it again, and it 
+        worked. Grace had been working on being able to view the stats, so we added that to the Playing_Mode() function after the 
+        initiative roll had been entered for each character. We encountered issues where our code did not mesh together, as 
+        selecting to view stats would skip screens or display two screens at the same time. We went through the code and made small 
+        checks to make sure it was all correct. The big change was fixing the case statement for viewing the stats or continuing 
+        onto the next character so that after returning from viewing the stats, it automatically moves onto the next character.<br>
+        <img src="Images\Cut Panel.jpg" width="500" height="500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 4/10/2024<br>
+      <b>Start Time:</b> 11:30 a.m.<br>
+      <b>Work Time:</b> 10 Hours<br>
+      <p>
+        I talked to Joe about the pixel issue, and he said to try and send no reset bits, but instead send the data bits, wait at 
+        least 50 microseconds, and then send the next set of bits. I relayed this to Landon and he tried it, but it did not work. I 
+        looked over the datasheet, but it appears we are doing everything correctly. I tried thinking of other solutions, such as 
+        sending the reset bits first, but that would not work because the data is not sent in reverse order. Landon was able to fix 
+        the code by clearing the map before sending in the data. Landon then integrated my code with his, and we filled out the 
+        Playing_Mode function that was left empty from my last journal. Grace and Neil were able to get the character exporting code 
+        working, so they gave us two test cases to use for implementing our character placement and initialization. When running the 
+        code, we were not able to see the player pixel light up where it should have been. When debugging, we discovered that it 
+        grabs the character from the vector properly. We fixed this by renaming the characters object to charactersVec in 
+        GameCharacters.cpp. We then changed the code that Grace and Neil had modified without telling us, including changing how 
+        many times the while loop ran in the constructor such that it did not decrement by one, as well as making the vector object 
+        work correctly. We then modified the GetCharacter function so it accounted for the change in variable name for charactersVec. 
+        We ran the code, and it worked, successfully showing our created player, and it read the magnet and followed the rest of the 
+        code. There were a few small bugs that were related to the LCD where I did not color the text right, flipping the text color 
+        and background color. I also forgot to set the key variable to null when checking for numbers in setting the initiative. We 
+        then added a second character to the input string, and we found that it also worked with this character. We then changed the 
+        position of the second character, and the code skipped past checking for the magnet, which meant that the sensor was engaged 
+        (pulled low) when it should not have been. In the process of trying to figure this out, we had somehow messed up the boards 
+        such that the first pixel issue being green sprung up again. We consulted with course staff, who had a myriad of advice, 
+        including using the oscilloscope to see the bits being sent, as well as changing the board and timer order. We first started 
+        with changing the boards, and found that one board had a hardware issue and needed to be resoldered, as 15 of the pixels were 
+        not lighting up. I do not know what the exact issue is. We also discovered that one of the boards may have caused other boards 
+        to not work, so we removed it, and the boards appeared to be working until we attached another set. We then thought that it 
+        was the amount of pixels being turned on that caused the issue, so we kept the boards attached, but only turned on one set at 
+        a time, but we still got issues. We tried switching out the connectors, but the issue persisted. We then tried to attach the 
+        5V and ground lines to a more stable connector and bigger gauge wire, but this did not fix the issue. We then switched where 
+        the power cables were attached, but no matter what board they were attached to, there was no pattern as to which board was 
+        being lit up or not. One of the boards did not work at all with the power being attached to it, and I discovered that the 
+        ground pin on the front connector was not soldered, so I quickly fixed that. I discovered this issue by using the multimeter. 
+        We then tried to use the oscilloscope to capture the bits, using trigger edge and the PWM, but we could not get a consistent 
+        reading as to what bits were being sent. When the pixels were white, it appeared that the signal on the first pixel's data in 
+        was correct, as it was doing the correct ratio of high signal to low signal to send all 1s according to the datasheet. When 
+        turning them off, we just got static, instead of the flipped ratio for all 0s. When doing the oscilloscope, I discovered that 
+        only the first pixel would show any sort of signal. Coincidentally, only the first pixel was the pixel that was not correct. 
+        We tried capturing the messed up pixel on the oscilloscope, but to no avail. I thought for a while, repeating the tests I 
+        described before in switching timers and board order, when I finally figured out the possible issue. I used the multimeter to 
+        read the voltage of the data in line, and found that it was around a volt for the first pixel, but zero for the rest, with no 
+        regard to whether or not it was turned on. Given that to get a green light, the first bit needed to be a 1 (which we verified 
+        by changing some pixels to have the MSB equal to 1), it appeared that the data line being pulled high caused a pixel to 
+        sometimes register as being green. I then tried connecting a wire between the data line of the first pixel and ground, but this 
+        did not fix the issue. I then had Grace (who was running the code because my laptop is still terrible) change the timer pins to 
+        be pulled down, and after testing it by resetting the code a bunch of times, the green pixel never showed up. We attached five 
+        more pairs of boards (the ones left out were the two that needed to be resoldered), and tested all of the lights, and they all 
+        appeared to work. We switched the code back to the regular testing code meant for going through the state logic, but we 
+        encountered the error where certain Hall Effect sensors were engaged without actually being engaged.  Using the multimeter, I 
+        discovered that the affected boards, the last five or so, had a 3.3V line that was not measuring 3.3V, and the ground line was 
+        not measuring 0. Using the datasheet as a reference, I found that the data lines of the sensors were pulled low instead of 
+        high, meaning they were engaged. I assumed this was a hardware issue, and I let Landon know about this. I wrote on the board 
+        a summary of what needed to be fixed, including the Hall Effect sensors and the two boards that need to be soldered.<br>
+        <a href="https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf">WS2812B Datasheet</a><br>
+        <a href="https://www.diodes.com/assets/Datasheets/AH9246.pdf">Hall Effect Sensor Datasheet</a><br>
+        <a href="Code\Updated Playing Mode.zip">Code For This Journal</a><br>
+      </p>
+
+      <b>Date Reported:</b> 4/9/2024<br>
+      <b>Start Time:</b> 10:00 p.m.<br>
+      <b>Work Time:</b> 2 Hours<br>
+      <p>
+        I returned to the lab with the box, showing it to Landon and Grace. I told them some precautions, such as not tightening the screws too tight, otherwise the wood would 
+        crack, and if one wants to take off the bottom board, the rest of the pieces have to be disassembled, otherwise the board might rack and break. The hex dividers and the 
+        plastic top both fit in and on the box. I then worked on my code, updating it with Landon's fix that he implemented for the sorting algorithm. After looking through it, 
+        I realized that the character variable should be a pointer so that when the initiative is set, and later on the position, it is actually saved into the character object. I 
+        went through my functions I implemented and changed it so it accounted for the change, making dots into arrows for function calls. I had to change the sorting algorithm in 
+        GameCharacters.h, as well as change the character initialization in GameCharacters.cpp so it also accounts for pointers. I commented out the AddCharacters function, because 
+        the pointer change broke it, and Neil's character initialization made the function moot anyways. I then compiled the code, which worked, but I still could not test it since 
+        I needed Grace and Landon's code to finish the character initialization and pixel and Hall Effect sensor modification and check. I then tried to help Landon fix his code, 
+        where the first pixel in a set of 32 will be green. Landon found that in the datasheet that the reset time needs to be at least 50 microseconds after sending in the data, 
+        which is equivalent to 40 bits. He tried that, but it did not work. We tried increasing the number of bits, but it still did not work. I tried looking up different things 
+        online, but I could not find a solid answer as to why it does not work. We will have to consult with the course staff tomorrow.<br>
+        <a href="Code\Playing Mode and Game Start.zip">Code For This Journal And Previous Journal</a><br>
+        <a href="https://community.st.com/t5/https://arduino.stackexchange.com/questions/78778/ws2812b-reset-time">First Pixel Help</a><br>
+        <a href="https://community.st.com/t5/https://forum.arduino.cc/t/first-led-flickering-wrong-color-ws2812b/873035/13">Second Pixel Help</a><br>
+      </p>
+
+      <b>Date Reported:</b> 4/9/2024<br>
+      <b>Start Time:</b> 1:30 p.m.<br>
+      <b>Work Time:</b> 6 Hours<br>
+      <p>
+        Grace showed me how to get the code that everyone has been working on from Github using Github Desktop. I cloned this code into my workspace. I then looked at the states 
+        that were completed in the flowchart, and the next state to work on was the PLAYING_MODE_STATE. To complete the code for this, I needed the files associated with all of the 
+        character definitions, so I had to wait as Grace copied this code from one git workspace to ours. In the meantime, I commented out an outline of the logic, where I would 
+        cycle through the character list, and with each player I would flash their hex position, display their name on the LCD, wait until their character is placed, confirm the 
+        placement on the keypad, then move on to the next character. I went ahead and worked on the code since Landon was still not here, going through my logic. I commented on 
+        parts of the code where Landon needed to insert functions that he had involving the pixels and the Hall Effect sensors. I added a timeout for a minute that would restart 
+        the process if a person never placed a token. After all this, I realized that in the flowchart, the initiative rolls follow the character placement, so I decided to add in 
+        the initiative roll to the character placement, where a user would enter in a number after their character was placed. I added the backspace button since a user would need 
+        to correct their input if they made mistakes. This was as simple as making the last character null for the string. I then converted the string to an integer and set the 
+        initiative for the character. I also put in checks that they could not send in an empty value, nor could they backspace when they had not entered a value. Because I had the 
+        initiative set for the players, I needed code that would allow for the DM to set the initiative for the monsters, so I added an else statement for each character that was 
+        not a player to have their initiative set in the same way. The distinction is that the hex position is not shown so that players cannot see where the monsters are located. 
+        At the end of the for loop, I changed  game_state to GAME_START_STATE for the next section in the flowchart, which would be responsible for the beginning of the actual 
+        gameplay. This involved confirming the users would start the game, then sorting the character list based on descending order of initiative. I tried to do a separate 
+        function at first, but then I decided to do a lambda function in the GameCharacters.h file so the code looks cleaner. I built the code and got several errors. Half of these 
+        were simple syntax mistakes where I had mistyped the function or variable name. One error I had was that my switch statement did not like my for loop because in my case (1) 
+        I modified the indexing variable. I modified this to be a while loop and added braces around case (1) so the code knows it is absolutely separate from case (2). The rest of 
+        the errors involved issues with how I was implementing the functions that involved the character list and class. Part of the issue was my duplicate includes, so I fixed it 
+        such that I only included GameCharacters.h, since it already includes BaseCharacters.h and Characters.h. My second issue was not implementing the characters variable 
+        correctly, so I solved this by declaring an extern variable at the beginning of states.cpp, and changing the functions such that it accounted for the modified character 
+        variable. My last issue was my sorting algorithm, which Landon fixed because I had to go get the box my stepdad had made. The trip took two hours and is included in my time 
+        for this journal. The box looks great. Also, I took a break in coding and talked to Chuck about the piece of plywood, but it was not done yet. I worked on the code after my 
+        drive, which can be downloaded from the journal above.<br>
+        <img src="Images\Playing Mode and Game Start Flowchart.png" width="500" height="400"></img><br>
+      </p>
+    </div>
+
+    <button class = "accordion">Week 13</button>
+    <div class = "panel">
+      <b>Date Reported:</b> 4/5/2024<br>
+      <b>Start Time:</b> 10:45 a.m.<br>
+      <b>Work Time:</b> 5 Hours<br>
+      <p>
+        Landon told me that there were some issues with the pixels and sensors not working on the first set of eight boards, but 
+        since he was not here in the lab to show me what needed to be fixed, I went ahead and worked on the other eight boards. I 
+        first cut the wires in the same manner and order as yesterday, cutting seven sets since they connect in between the eight 
+        boards, then attached them to the 5 pin connectors using the wire gun. I then connected the boards in pairs using the 
+        addressing bits on the IO Expanders to establish the order. I then got more of the thin green wire from the back, clipped 
+        the ends, and soldered them to each pair to connect the data lines of the pixels such that there are four sections of 32 
+        pixels. Photos of how this is done can be seen in the previous journal. After washing and drying the boards, I hot glued the 
+        connections to make sure they were more firm, then I attached the eight boards all together simply by plugging in the 
+        connectors. Lastly, I got the measurements for the plywood that the gameplay PCBs attach to. One side of the board is the 
+        length of the interior of the box, so 17", and for the other measurement I simply measure from one end of the top gameplay 
+        PCB in a pair to the other end of the bottom gameplay PCB in a pair. I did this to account for the offset because the boards
+        do not line up straight on. The value I got was 21". I then filed a request for the board to be cut in the shop below the 
+        lab, asking for 1/8" plywood. Landon sent the code to Neil, so tested to see if the connected boards worked. For the first 
+        set that I had done, the last row was incorrect, where the first pixel was incredibly bright. I found that the issue was 
+        that a ground pin was not soldered correctly, so I fixed that. We tested it again, but the last row was not lighting up at 
+        all, so I soldered the green data wire again, and it finally worked. We tested the second set of boards, and they all 
+        worked on the first try. We then hooked up all 16 boards together, and they all lit up. Occasionally some of the boards 
+        would not work if someone touched it, but after using the reset button they would light up to the mock map we made. 
+        However, we had an issue where the first or last pixel per a timer channel would be green, or add green to the color it was 
+        programmed to. After talking to Joe, we switched the timer channels on two of the boards to see if it was a pixel issue, 
+        and the lights swapped, meaning it was a software issue. We all spent a long time stepping through the code to check for 
+        various values and registers to see if any values did not line up. Landon's journal should have more information on this, 
+        as he is the one who was at the laptop looking through the code while I checked the lights to see if they were correct or 
+        not. Grace and I figured out that the issue was an overflow not between timers, but with the buffer. Landon changed the 
+        code such that there were no reset bits sent into the DMA. According to the pixel datasheet, 50 reset bits were needed, but 
+        this caused our microcontroller to think there were an extra two pixels on our board, so it added two green pixels to the 
+        board in confusion. After that, I explained my code again to Landon, showing him how the switching states work with the 
+        keypad interrupt, as well as a general flow of structure. I have gone through this flow before in previous journals.<br>
+        <img src="Images\Connected Pixels.jpg" width="500" height="400"></img><br>
+        <img src="Images\Test Map Half.jpg" width="500" height="400"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 4/3/2024<br>
+      <b>Start Time:</b> 12:15 p.m.<br>
+      <b>Work Time:</b> 5 Hours<br>
+      <p>
+        I showed Landon and Neil how to fix the issue of the code not flashing to the microcontroller when the USB was not plugged. The solution was to disconnect the ST-LINK from 
+        the microcontroller instead of disconnecting it from the laptop. I then helped Landon debug his code, as it was not recognizing certain global variables. The solution was 
+        that though he declared them as extern in the .h file, he did not actually give them a value in the .cpp file. I then soldered the addressing lines on the gameplay boards, 
+        created a pair of boards addressed from 0-7 (since the two I2C lines are used). A couple of them were already done, so I filled out the rest. Some of our connectors came 
+        in, so Landon and I began to connect the gameplay boards together. Landon used his schematic as a reference to connect the boards across from each other. He also color 
+        coded the wires to give distinction. We used the 22 gauge wires for the connections, based on Joe's recommendation. We tried using 0.75" length for the wires, but we found 
+        it was too short, so we used 1.5" length for all the lines except for the ground line, because its connection was longest, so we made it 2". I attached the wires to the 
+        connectors using the wire gun, making sure the order and orientation were correct. We ran out of 5 pin connectors, so we started using some 2 and 3 pin connectors we had 
+        leftover, but at the exact moment, Joe gave us our 5 pin connectors, so we started using those instead. We connected eight boards together so we could test Landon's code. 
+        After we connected them, I discovered that we did not order them by the addressing to the IO expander, but this was fine temporarily, as we were only testing the pixels, we 
+        do not use I2C for data. Landon set up his code to run all the boards, but we discovered that we could not configure the DMA such that it triggered all the timer channels 
+        we needed because there were conflicts with certain timers. We also discovered that Timer 4 Channel 4 does not have a trigger for some reason. I looked into the datasheet 
+        and the family reference manual for the STM32F405, and I discovered that both documents slightly conflicted with each other. The datasheet said that Timer 4 could be 
+        triggered with the DMA, but we could not configure all of the channels that way. The family reference manual said that there were enough DMA channels that would allow for 
+        all the timer channels to not conflict with each other, but in the IDE Landon was only able to set up two DMA channels. The conflict in timers could be resolved using 
+        software to switch what timer channels the DMA triggers, but since Timer 4 Channel 4 did not have a trigger, we would have to fix that by daisy-chaining the pixels from the 
+        end of one board to the beginning of another board. We discussed it with Joe, and he gave us a thin wire to use so we could daisy-chain the boards. Landon and I decided that 
+        we could use half of the timers needed, TIM1 and TIM3, which will not conflict with each other, and we could connect the boards such that there are eight pairs connected 
+        together, with each pair having one timer channel controlling it, and Landon could expand the code so it sends information to 32 pixels instead of 16. I soldered the wire to 
+        the end of the zero addressed board to the first addressed board, cleaned it, hot glued the connection to make it more firm, and then gave the boards to Landon to test. The 
+        test did work, so I went ahead and repeated the process for the other six boards (which complete the eight boards we were trying to test). Landon had to leave for class, and 
+        I also had to leave, so currently the six boards are not tested. For more information on this process, please refer to Landon's journal for this time.<br>
+        <img src="Images\Soldering Address.jpg" width="500" height="750"></img><br>
+        <img src="Images\Wire Connectors.jpg" width="500" height="750"></img><br>
+        Below is the connection from the first board to the second board.<br>
+        <img src="Images\Wire Fix First Board.jpg" width="500" height="750"></img><br>
+        <img src="Images\Wire Fix Second Board.jpg" width="500" height="750"></img><br>
+      </p>
+    </div>
+
+    <button class = "accordion">Week 12</button>
+    <div class = "panel">
+      <b>Date Reported:</b> 3/29/2024<br>
+      <b>Start Time:</b> 8:00 p.m.<br>
+      <b>Work Time:</b> 2 Hours<br>
+      <p>
+        I used AutoCad to design the box using the measurements I had acquired earlier. I first created the bottom rectangle, making 
+        it 19.25" x 17". I then created four rectangles around that rectangle such that the shorter ones on the sides wrapped across 
+        the longer ones on the top and bottom. The four sides all wrap around the bottom rectangle. The four smaller rectangles were 
+        made with the stipulation that the wooden boards would be 0.5". I then extruded the pieces so the bottom board was 0.5" tall, 
+        and the other four rectangles were 2.6875". I got this value by adding 1" (two 0.5" boards) to the inside height I had 
+        calculated previously. I then created the rectangle on top and extruded it 0.5" into the structure so that it was flat on top. 
+        Using the subtract tool, I got rid of part of the top board on the right side 19.75". This is so that the hex grid can fit on 
+        the bottom board. I then created a 0.25" perimeter around the subtraction, extruded it to 3mm (0.11811"), and then used the 
+        subtraction tool to erase it. This is for the acrylic to lay on top of so it is flush on top. Lastly, I added four blocks in 
+        the corner of the bottom rectangle (corner relative to the missing top, not the actual corners) for the mounting board to sit 
+        on top of. I considered adding more for the center, but I am not sure what the size needs to be for a firm connection with a 
+        screw that would not crack the wood. Currently they are 0.25" square, but this can be adjusted. Because the size can be 
+        adjusted, is it possible they interfere with where the PCB center mounting hole attaches to the mounting board, so I need to 
+        look more into it. For now, this design will work. I sent pictures of the design to my stepdad, as well as gave an in-depth 
+        description of the dimensions and deisgn choices of the box.<br>
+        <img src="Images\Isometric View.png" width="600" height="500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 3/28/2024<br>
+      <b>Start Time:</b> 9:00 a.m.<br>
+      <b>Work Time:</b> 5.25 Hours<br>
+      <p>
+        I went into the lab today, but Joe was not in yet, so while I was waiting I cleaned up the workspace, making sure the desks had enough space for all of us to work. I also 
+        put away parts we borrowed from the cabinets back, while keeping our spare parts on our top shelf just in case we need them. I found the missing 5 pin connector and put it 
+        by the PCB that was missing it. I might solder this later. I then put away all of the wires back on the hooks, keeping the ones that we need for testing. I then separated 
+        the workspace such that Landon had space to test his code on the gameplay PCBs. I then took the last two PCBs that needed to be redone and did the soldering on the first 
+        pixel for both, since according to the note attached, that was the issue. Joe finally came in, so I asked him about the available standoffs he had so we could mount our 
+        boards. He has M2s that would work for my PCB (even though they were M2.5), and also found 2/56 screws and nuts that would work for the gameplay PCBS (that were M2.5). Joe 
+        told me that we would need a mounting board to connect the screws to the gameplay PCBs because the height would be too big for a screw to cover, so we went down to the 
+        machine shop where he showed me where the screws and nuts were, as well as talk to Chuck about a board he could theoretically cut for us. He found a large eighth-inch board 
+        that would work for our project. I then returned back to the lab and took measurements for all the components and restrictions. This took quite a long time because I had to 
+        constantly verify the measurements I took were correct, convert from mm to inches and back, and adjust the values such that they were close to a multiple of a 
+        sixteenth-inch. Any measurements smaller than this can become unreliable when cutting boards. My restrictions were the height of the hardware PCB, the length of the 
+        connectors on the gameplay PCB, and the distance between the PCB and the top of the acrylic, because the magnets only work within an operable distance. I adjusted the 
+        height of the small blocks that would connect the mounting boards to the box to cover the distance such that it would allow the hardware PCB to fit (because the bulk 
+        capacitor took a lot of space). When I lined up the gameplay boards, I noticed that the mounting holes conflicted with the connectors, so I talked to Joe if it was possible 
+        for the machine shop to cut out little divots that would account for the connectors, and he said they could with a band saw. Now that I have all of the measurements, I am 
+        going to next use AutoCAD to design the box and send the dimensions over to my stepdad so he can begin the construction. Because I had time to kill, I went ahead and 
+        soldered the 5 pin connector.<br>
+        <img src="Images\Mounting Hole Conflict.jpg" width="400" height="750"></img><br>
+        As seen above, the hole on the top board lines up with the connectors on the bottom board, so the mounting board will need to be cut special.<br>
+        <img src="Images\Packaging Measurements.png" width="400" height="750"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 3/27/2024<br>
+      <b>Start Time:</b> 11:30 a.m.<br>
+      <b>Work Time:</b> 2.75 Hours<br>
+      <p>
+        I copied over my code onto my laptop so I could program the hardware PCB directly and test to see if the code works. This took a while as my laptop is slow. I also updated 
+        the pins according to my comments on my .h files. After this, I built the project, but I got the weird error again where the plugins would not work, so I cleaned the 
+        project, then connected the LCD and keypad to the PCB, then ran the project. The code on the LCD ran, but the keypad did not work. I realized that I connected the wires in 
+        reverse, so after flipping it, I ran the program again, and it all worked. In fact, even the second row on the keypad worked, so that means all the wiring is correct for 
+        the keypad. One error I got was that the LCD would act as if I pushed the enter key when I did not, so in my code I went to each state function and made the key variable 
+        null before it entered the while loop to ensure it would stay null. I also drew a black rectangle next to the first option because sometimes it would show up on the second 
+        option at the beginning of my function. After I showed the course staff my progress, I began to work on finding the standoffs and screws for the board. Because the hardware 
+        PCB does not need that many standoffs, I tried to find them in the cabinets, but I could not. Since Joe was not in today, I could not ask him if he had any that were of 
+        size M2.5. I did some research on the pricing for M2.1 standoffs and screws, and I found that nylon material for standoffs are substantially cheaper, so we will most likely 
+        use those. Because I do not know what I am using for the hardware PCB, I will have to decide the measurements of the packaging tomorrow. Hopefully Joe will be in so I can 
+        ask if he has any parts we can use.<br>
+        <img src="Images\Null Key Example.png" width="750" height="200"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 3/26/2024<br>
+      <b>Start Time:</b> 8:45 a.m.<br>
+      <b>Work Time:</b> 1 Hour<br>
+      <p>
+        The team discussed the next plans for the project such that we can all work in parallel and not come across any deadlocks where someone else cannot work because they are 
+        waiting for someone else to finish. Because I already finished all the work I can do with the keypad and LCD, I am going to work on the packaging design, but Grace is going 
+        to continue her work on the plastic hex dividers. I also explained my code to the group, showing how the code switches states and uses interrupts. They are now going to 
+        model their code after mine so that it fits together. I then tried to fix one of the soldered boards that Landon tested by resoldering the eighth Hall Effect sensor. 
+        Tomorrow I am going to get the measurements so I can begin the CAD on the packaging.<br>
+        <br>
+      </p>
+
+      <b>Date Reported:</b> 3/25/2024<br>
+      <b>Start Time:</b> 11:15 p.m.<br>
+      <b>Work Time:</b> 1 Hour<br>
+      <p>
+        I implemented the DM_Mode() function, copying over the code from Menu() and modifying it so it displays the correct text and states for uploading the map, viewing the map, 
+        and returning back to the menu. I added these new states to the enum in main.h. This came from the flowchart describing what DM_Mode() does. I had to modify how the A and D 
+        keys work since there were more than two options, so I made it such that it adds or subtracts one while still keeping it in the bounds of 1-3. Because I had three options, I 
+        had to also modify how the black selection rectangle gets drawn and erased, so I had to create a prev_selection variable that tracks the last value of selection, then create 
+        an if statement that erases the last position of the rectangle and draws the new position based on the selection variable. When I tested the function, it did not correctly 
+        show the rectangle on the second option. I went through the code piece by piece and stared at it for a bit until I realized that I never reset the key variable back to null 
+        when it checks for A and D. I added those lines in DM_Mode() and in Menu(), because I forgot to do it there, too. When I ran the code again, it correctly showed the bar on 
+        the section option, and when I selected "Return to Menu", it correctly returned back to the menu screen, and I was able to continuously cycle through the options. Sometimes 
+        the screen randomly cleared to all white, which I do not know was a wiring issue or a software delay issue, so I will have to look at that in the future. Lastly, I commented 
+        the pin and protocol settings in keypad.h and lcd.h associated with those components so my teammates know what to do with their .ioc file when I send them this code.<br>
+        <img src="Images\DM Mode Flowchart.png" width="600" height="500"></img><br>
+        <a href="Code\DM_Mode.zip">Code For This Journal</a><br>
+        <img src="Images\DM Mode Results.jpg" width="500" height="800"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 3/25/2024<br>
+      <b>Start Time:</b> 4:00 p.m.<br>
+      <b>Work Time:</b> 0.75 Hour<br>
+      <p>
+        Now that I have the ability to effectively use interrupts with the keypad, I checked the software flowchart to see what I should implement next for the LCD. The first LCD 
+        box said welcome screen, so I renamed my menu function and state to “Welcome”, and then added a MENU_STATE and Menu() function that would incorporate the second LCD box. 
+        Using a very similar structure to the previous function I did, I implemented a choice of two options, DM Mode and Playing Mode, and used the A and D keys as a scrolling 
+        feature, where I drew a black rectangle next to the piece of text to visualize which option one has selected. The hashtag key would then be detected and change the 
+        game_state to either DM_MODE_STATE and PLAYING_MODE_STATE (both added to the GameState enum), and exit the function.<br>
+        <img src="Images\Welcome and Menu States Flowchart.png" width="500" height="500"></img><br>
+        <a href="Code\Menu Function.zip">Code For This Journal</a><br>
+        <img src="Images\New Menu Screen Results.jpg" width="500" height="800"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 3/25/2024<br>
+      <b>Start Time:</b> 11:30 a.m.<br>
+      <b>Work Time:</b> 4 Hours<br>
+      <p>
+        I wired up my keypad as I have previously, using the schematic as a reference to connect the proper pins with wires to the 
+        development board. I filled out my menu function, first by setting the screen to white, displaying "The Dungeon Crawler", 
+        and then flashing the text "Enter the Dungeon?" on the bottom. To do this, I intermittently wrote the text then cleared it 
+        by drawing a white rectangle over it. I then set delays to give the appearance that it was flashing. I tried testing this, 
+        but I had issues with formatting the text, so I switched the font style to the medium size in lcd.h and also rotated it 
+        upside down by uncommenting that set of defines, then centered both pieces of text so it fit better. I did this by taking 
+        the number of characters, multiplying that by the width of the font, then doing 240 (the width of the screen) minus the 
+        number I got, then divided it by 2. This gave me the x position to display the string. I was able to get the bottom text to 
+        flash. I then played around with different delays to give the correct feel of flashing text often seen in arcade games. I 
+        settled on 0.5 seconds. I then tried to test using the hashtag key to break out of this while loop that flashed the text to 
+        act as an "enter key" to actually start playing the game. Since the game logic does not exist, I just cleared the screen for 
+        five seconds. I wired up the keypad using the schematic, wired up the rows as inputs and pulled down and the columns as 
+        outputs, and tried to use the Get_Key() function to retrieve the hashtag key. This did not really work, plus I knew that 
+        this method was not going to be efficient in the long run, so I looked up how to use interrupts on a keypad. I found a 
+        tutorial online on this exact topic. I followed the instructions, adapting his setup and code to my wiring. I changed the 
+        row pins from inputs to GPIO_EXTIs. I then set up the NVIC so it used pins 5-9 and pin 4 as an interrupt, since this covers 
+        the pins 4-7 the rows are wired up to. I then copied over the code into my main file, the private variables, the code prior 
+        to the while loop, and then the actual interrupt function itself. I modified the code so it used GPIOD and the correct input 
+        and output pins. After all of that, I went into the debugger and inputted "keyPressed" as a variable to see in the Live 
+        Expressions tab, and finally hit resume on the debugging process. When I pressed a button on the keypad, it changed the 
+        value of the variable, but it was not correct. I discovered it did the opposite key, so I went back to the interrupt 
+        function and flipped the values based on the row and column position to the correct key values. I went into the debugger 
+        again, and found that all the keys worked except for the second row. I checked the wiring and the code, but I could not find 
+        an issue. I assumed that a different keypad would probably work, and I went ahead and chugged through. I then modified my 
+        Menu() function so it used the interrupt to check if the hashtag key was pressed. I tested the function, and it worked, 
+        successfully clearing the screen. I then modified all of my code such that it was formatted in the way that I like it, as 
+        well as renaming variables. The only big change I made was changing the integer keyPressed variable into a character 
+        variable called "key", then subsequently changing the interrupt handler so it used characters rather than ASCII. I then 
+        moved my code from the main file into keypad.c and keypad.h for better organization, and deleted my Display_String function 
+        since I would no longer need that.<br>
+        <a href="https://www.micropeta.com/video35">Interrupts on Keypad Tutorial</a><br>
+        <a href="Code\Keypad Interrupts.zip">Code For This Journal</a><br>
+        <img src="Images\Basic Menu.jpg" width="500" height="800"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 3/24/2024<br>
+      <b>Start Time:</b> 5:00 p.m.<br>
+      <b>Work Time:</b> 1 Hour<br>
+      <p>
+        I copied over my code from the keypad files into the project on my desktop. I also renamed the ili9341 files to lcd, as well 
+        as replaced every instance of "ili9341" with "LCD" as to have a more general name for variables and functions. I did this to 
+        reduce the amount of typos that would cause errors in our code. I also set up a basic enum called GameState in main.h that 
+        will tentatively act a way to switch states in our game as to help make the code flow better. I created an outline of how 
+        the while(1) loop would call a menu function to start off the gameplay based on a MENU_STATE.<br>
+        <img src="Images\MENU_STATE Outline.png" width="500" height="500"></img><br>
+        <img src="Images\GameState Enum.png" width="300" height="200"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 3/24/2024<br>
+      <b>Start Time:</b> 1:30 p.m.<br>
+      <b>Work Time:</b> 0.5 Hours<br>
+      <p>
+        I recently added a link of my journal to my resume, so I decided to do some maintenace and clean up my progress journal, 
+        especially in the earlier entries because I did not know the exact standards of what a journal should have been at that time. 
+        This mostly consisted of me adding proper links to documents in websites rather than just pasting in the URL, as well as small 
+        grammatical mistakes. I also formatted some images to be different sizes to make them more readable.<br>
+        <br>
+      </p>
+
+      <b>Date Reported:</b> 3/23/2024<br>
+      <b>Start Time:</b> 2:15 p.m.<br>
+      <b>Work Time:</b> 1.5 Hours<br>
+      <p>
+        Grace and I finished the last seven gameplay PCBs that needed to be soldered. The first board I soldered had an issue with the first pixel and sensor, so I resoldered both. 
+        The second pixel looked like it was burned, so I also replaced that one. The second board had an issue with either the third or fourth pixel, so I resoldered the connections 
+        for both. I also went ahead and did all 16 sensors for this board without first testing the pixels because Landon was not here to test them, and I would rather get the 
+        soldering done anyways. The last two boards needed the full set of sensors, so I did both of them. For reference on how to solder these boards and what they look like, 
+        refer to previous journals. I also grabbed a development board, a keypad, an LCD, and the wires needed for both components from the lab so that I can work on the code for 
+        the menu screen on my desktop since it is a lot faster at building and debugging the code.<br>
+      </p>
+    </div>
+
+    <button class = "accordion">Week 11</button>
+    <div class = "panel">
+      <b>Date Reported:</b> 3/22/2024<br>
+      <b>Start Time:</b> 2:00 p.m.<br>
+      <b>Work Time:</b> 2.5 Hours<br>
+      <p>
+        I soldered the Hall Effect sensors on one board and put it into the testing pile for Landon to check. The microcontrollers came in, so I soldered one of them to the hardware 
+        PCB, as well as the six pin connectors for the gameplay PCBs. I spent a long time soldering the microcontroller because I did not want to make any mistakes. After washing 
+        the board, I checked under the microscope for any solder bridges, found a couple, and spent time meticulously removing the bridges. After doing so, I then used a pair of 
+        tweezers to gently poke at the pins to double check if they were soldered. I found one pin that moved, so I soldered that pin and removed the solder bridge that was created 
+        in the process. After another round of washing, I checked one final time under the microscope, found no errors, and brought it over to the workbench for testing. The board 
+        was taking a while to dry, so I did another visual inspection and found a possible solder bridge. I checked it under the microscope, but it did not appear it was a solder 
+        bridge, but a trace going into the microcontroller. I pulled up the schematic, and it was just a trace, meaning there were no solder bridges. After another round of drying, 
+        I plugged in the board and tested the voltages across different capacitor values. I got 5.5V across the big bulk capacitor, 3.3V across the rest of the decoupling and bulk 
+        capacitors, and 1.2V across the VCAP capacitors, which means everything is correct. I ran the LED test, and the debugging LEDs lit up in the correct pattern. I then ran the 
+        keypad test, which worked, and then the LCD test, which worked. I then ran my display character code, which can be seen in a previous journal, and the LCD did show the 
+        character on the screen, showing that the two can communicate. It did not display in the exact way I was expecting it to, but since this test was not an in-depth venture 
+        into coding the LCD, I considered this a success. Landon and I then tested one of the PCB strips using the six pin connectors since we wanted to get a couple of our 
+        preliminary PSDRs checked off. The board worked perfectly, so we grabbed Joe and he checked us off. I then consulted Joe about any 1x8 connectors for the LCD and keypad to 
+        see if there was a better way to connect them to the board besides a bunch of loose wires, but Joe did not have much in stock. I will most likely work tomorrow on finishing 
+        the soldering of all the boards.<br>
+        <img src="Images\New Hardware PCB with Microcontroller.jpg" width="500" height="500"></img><br>
+        <img src="Images\Keypad and LCD Communication.jpg" width="500" height="500"></img><br>
+        <img src="Images\Gameplay PCB PSDR Check.jpg" width="500" height="500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 3/21/2024<br>
+      <b>Start Time:</b> 7:30 a.m.<br>
+      <b>Work Time:</b> 7 Hours<br>
+      <p>
+        I did very similar work today as I did yesterday, continuing the work on soldering the WS2812Bs and the Hall Effect sensors, as well as their associated components. After 
+        each time I completed the WS2812Bs, I gave the board to Landon to test if the soldering worked. Roughly half of the time, one or two of the pixels were not soldered fully, 
+        so I touched them up, having Landon verify once they were good. After Landon verified they were good, he gave them back to me so I could attach all of the Hall Effect 
+        sensors. After doing that, I gave the board back to Landon so he could verify the sensors worked. Roughly a fourth of the time he returned a board, labeling which sensor did 
+        not work. There were consistent issues with the boards that Grace and Neil had soldered where the IO expander did not work, so I had to also fix the soldering on those. 
+        Twice with the boards I soldered, the pin connectors were on the wrong side of the board. I spent around 45 minutes in total fixing those. Landon asked me to solder a 
+        connection between the second zero ohm resistor by the IO expander so that he could use multiple boards and test the I2C addressing. Landon, Grace, Neil, and I were able to 
+        get six more fully completed boards done today, meaning there are eight fully done boards. One more board needs a pixel fixed, three boards need the Hall Effect sensors 
+        attached, one board needs the pixels and sensors attached, and the last three boards need to be pasted. I will try to finish the boards by tomorrow if I can. Please look at 
+        yesterday's pictures and journal for more details on the soldering process, since today was merely a continuation of yesterday's work.<br>
+        <img src="Images\IO Expander Addressing.jpg" width="500" height="500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 3/20/2024<br>
+      <b>Start Time:</b> 12:30 p.m.<br>
+      <b>Work Time:</b> 8 Hours<br>
+      <p>
+        I discussed with the course staff about the LCD signal not working, and they recommended to solder another board and wait for the extra microcontrollers to come in. I 
+        checked one final time with the multimeter and the LCD code on the PCB to see if there were any easy to fix issues, but I did not find any. I began soldering the new board, 
+        using components in the labs, spare parts we had, and using the reset button, the Buck converter, and the power jack from the original board onto the new board. The process 
+        for soldering the new board was identical to the process for soldering the old board, except this time I did not solder the microcontroller nor make any errors. After 
+        getting the new board identical to the old board except for the microcontroller, I powered it and tested the voltages across the all the capacitors, and I received the 
+        correct values for everything except for the capacitors associated with VCAP, which I suspect is from the microcontroller not being there. All of the work with the new board 
+        took roughly three hours. I then began helping the other in soldering the gameplay boards. I began by finishing the first board they had used the hot plate on by connecting 
+        the IO expander, the first four WS2812Bs and their capacitors (because the rest were done on the hot plate), and the connectors on the end. I gave the board to Landon to 
+        test, but it turns out that I forgot to solder the resistors and the capacitors on the backside. Landon soldered those, while I got a new board and did the same soldering 
+        process, except this time I soldered the resistors and capacitors on the backside as well, using Landon's schematic as a reference. I made an error where I placed one of the 
+        5 pin connectors backwards such that the back piece was facing away from the board rather than towards it, meaning it would be very hard to wire a connection with other 
+        boards. I spent a good 30 minutes or so removing it and resoldering it. It took so long because the connector was hot while the solder was on, and we could not use pliers to 
+        remove the piece because it would have broken it. Eventually we got it off, and after cleaning and drying it, we tested the WS2812Bs to see if they worked. One of the ones I 
+        had soldered was not working, so I rechecked the solder for that WS2812B, as well as the one before, since an issue with the pixel can actually be caused by a fault data 
+        connection on a pixel earlier in the line. The issue was with the second pixel (i.e., not the one that was not lighting up), and after a quick solder, we tested it again, 
+        and it worked. I then did the soldering for all 16 of the Hall Effect sensors. This involved bending the component such that it was flat against the board, almost adjacent 
+        to the pixel, and the rounded edge was facing up. This ensures a good radius of magnetic sensitivity without causing interference. After doing the soldering, Landon checked 
+        to see if the sensors worked by using the lights to indicate a change in magnetic field, and the last sensor did not work. I soldered that one again, had Landon check it, 
+        and it worked finally. I did the sensors for another board, but by that point Landon had left, so I could not check it. The work for soldering the new boards was not 
+        complicated, but it was very repetitive, so it still took a long time. My goal is to get the rest of the boards soldered by the end of this week, but we need Joe to supply 
+        us with more 0.1uF capacitors because we are almost out, and we need at least 100 more.<br>
+        <img src="Images\New Hardware PCB.jpg" width="500" height="500"></img><br>
+        <img src="Images\Gameplay PCB Schematic.jpg" width="500" height="500"></img><br>
+        <img src="Images\Gameplay PCB Top.jpg" width="500" height="500"></img><br>
+        <img src="Images\Gameplay PCB Bottom.jpg" width="500" height="500"></img><br>
+        <br>
+      </p>
+
+      <b>Date Reported:</b> 3/19/2024<br>
+      <b>Start Time:</b> 11:30 a.m.<br>
+      <b>Work Time:</b> 3.25 Hours<br>
+      <p>
+        I started working on programming and testing the keypad. I set the GPIOD pins 0-3 to input and GPIOD pins 4-7 as output, since this is how keypads work as standard. I did 
+        not make any internal pull-up resistors since they already exist on the board. I also renamed the pins in the .ioc file to give more clarity to labeling. I created a test 
+        function for the keypad that properly checked the rows and columns, and if any key was pressed, it turned on the first debugging LED. However, when I built it, I got weird 
+        errors not pertaining to the code I wrote; it pertained to a plugin not operating properly. I updated the IDE to see if that was the issue. It took quite a while to update. 
+        When I built the program, I had no errors and only one warning, which pertained to a plugin again. I ran the program, but I had to update the ST-Link device as well. I am 
+        still getting a warning, which I assume is the fault of the IDE and not my code. I looked over my .ioc file, and I realized that I had the pins accidentally switched such 
+        that the rows were PD0-3 and the columns were PD4-7, so I had to switch everything in the setup as well as in the test function. I tried to run the program, but it did not 
+        work properly. The LED was on whether or not a key was pressed. I decided to scrap my test function and instead make a proper keypad.h and keypad.c file that set up proper 
+        variables and functions for more versatility. I created a character matrix that defined the values of the 16 keys, and I created a function that properly read in the value 
+        from the keypad and returned the key that was pressed. After doing this, I ran the program, but I encountered an error saying that I had a missing separator. I commented out 
+        all of my new code to see if it was an issue on my end or with the IDE, and it appeared that the error was with the IDE. With the advice of a TA, I cleaned my program, which 
+        got rid of my separation error, and instead it spat out errors with my keypad.c file. This was because I forgot to include the HAL library in the function, so none of the 
+        HAL functions or GPIO pins were being properly registered. I ran the program, and when I pushed down on a key with a certain row, the correct LED lit, and when I let go, the 
+        LED turned off. It should be noted that because my laptop is quite slow, it took long bouts of time to build and run the project. The keypad now works, so now I will need 
+        to create a test that establishes a connection between the keypad and LCD to demonstrate that one can receive a prompt from the LCD and respond with an input through the 
+        keypad.<br>
+        <img src="Images\Keypad Header File.png" width="400" height="300"></img><br>
+        <img src="Images\Keypad Source File.png" width="600" height="300"></img><br>
+        <img src="Images\Keypad Test Function.png" width="650" height="300"></img><br>
+        <img src="Images\Keypad Test Results.jpg" width="500" height="500"></img><br>
+        For the test above, the first row is pushed, and thus the first LED is lit.<br>
+        <br>
+      </p>
+
+      <b>Date Reported:</b> 3/18/2024<br>
+      <b>Start Time:</b> 12:00 p.m.<br>
+      <b>Work Time:</b> 5 Hours<br>
+      <p>
+        I talked with Joe, and he showed us how to connect a small gauge wire across the resistor pads to the trace connections, as well as using hot glue to hold down the 
+        connection since it was loose. We then tried to test the LCD again, and the screen did modify as it was supposed to, but only for a split second. We used the multimeter to 
+        test whether or not the SPI1_MOSI pin had any voltage, and it did not, indicating the connection is very loose or nonexistent. While waiting for Joe to return, I cleaned up 
+        my code, creating a LED_Test and LCD_Test functions that can be called within the while loop. I copied over the code from what I had before into these functions. I went 
+        ahead and tried to solder a connection again, this time going around the board such that the wire is touching the header pin from the underside. The LCD worked after doing 
+        this, so now I am going to glue the connections to ensure that they do not come off. After doing so, I tried to test the LCD code again, but the ST-Link would not connect to 
+        the microcontroller. I tried testing it on another laptop, and then I tried to see if the microcontroller pins to the ST-Link were getting power. They were, so after 
+        discussing with course staff, I tested the ST-Link on a development board, and it properly debugged and ran the empty program. This means I somehow destroyed my 
+        microcontroller in the process, though I have no idea how. I ordered two microcontrollers to replace the broken ones. After discussing how the voltages for everything work 
+        with the microcontroller with Joe, indicating that VCAP is at 1.2V, he told me to wire the SWCLK to high by scratching a metal pad on the power plane and connecting a 1K ohm 
+        resistor. This was because the SWCLK was no longer getting any power. I did this, tested the ST-Link connection, and it worked. I then tested the LCD code, and it also 
+        worked. We are going to keep the microcontrollers we ordered since it is good to have backups, and this board has involved some fly-wiring already. Since I want to test 
+        using the keypad with the LCD, I soldered the 1x8 header and the keypad's respective resistors, using the schematic and PCB layout as a guide.<br>
+        <img src="Images\LCD Fly Wiring.jpg" width="500" height="500"></img><br>
+        <img src="Images\ST-Link Fly Wiring.jpg" width="500" height="500"></img><br>
+        <img src="Images\Keypad Soldering.jpg" width="500" height="500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 3/16/2024<br>
+      <b>Start Time:</b> 4:00 p.m.<br>
+      <b>Work Time:</b> 1 Hour<br>
+      <p>
+        I sent over the files from the desktop to my laptop relevant to the LCD. I soldered the resistors for the LCD, as well as the header. After I copied over the files, without 
+        making any changes to them, I tried to test the LCD, but nothing occurred. I used the multimeter to diagnose which connection was not working, and it was the SPI1_MOSI 
+        connection. I removed the resistor and discovered that the metal pads had burned off. I tried soldering a wire between over where the resistor should be, but I did not have 
+        any luck in establishing a connection. I am afraid to damage the board anymore, so I emailed Joe to see if he had any solutions.<br>
+      </p>
+    </div>
+
+    <button class = "accordion">Week 10</button>
+    <div class = "panel">
+      <b>Date Reported:</b> 3/15/2024<br>
+      <b>Start Time:</b> 11:15 a.m.<br>
+      <b>Work Time:</b> 6.5 Hours<br>
+      <p>
+        I soldered the microcontroller, checked to see if there were any solder bridges, found one after washing the board, and then removed the bridge, washing the board again. 
+        After it dried, I attached the capacitors on the back. This took a long time because I had to reposition the capacitors since they were very close together. I started inside 
+        going out in a clockwise circle to make sure I could fit the soldering point between the capacitors. After washing the board and letting it dry, I soldered the external 
+        clock, the resistor for BOOT0, the reset button, and the 2x5 pin connection for the ST-Link. For the external clock, I had to switch with a 10pF capacitor because there was 
+        no 5pF in stock. I looked in the STMF405 datasheet, and a 10pF would work, as the capacitance had to be in the range of 5pF - 25pF. I had to switch out the button we were 
+        using from one in stock since the previous button was difficult to solder. For the 2x5 pin connection, we had ordered the wrong part, but Joe gave us a new one that actually 
+        fit the SWD connection. After another wash and dry, I inspected each part using the microscope to make sure there were no errors in my soldering. I did not find any. I then 
+        powered the board and checked to see if the voltages were correct. I got the same readings as last time across the components associated with power, and I checked multiple 
+        capacitors on the backside, and they were all around 3.2V, which is good enough. I then plugged in the board to my laptop to program. I created a new empty project, built 
+        the program, and then configured the debug settings so the reset behavior was done as a hardware reset since we had a reset button. I will have to double check if this is 
+        correct with my teammates and with the course staff. I had to switch out the ST-Link device I was using because the other one we had would not update prior to debugging. 
+        According to a forum I found online, this could be because the part was a counterfeit and would not work with STM32CubeIDE. Luckily the other one read that it was a STM32 
+        associated part on the IC. I tried to run the empty program again, but there was an error in the final launch sequence. It appears that it cannot see a connection to the 
+        microcontroller for some reason. It turned out that the microcontroller was oriented incorrectly. There are two divots and the smaller one is used to mark pin 1. I did not 
+        see this smaller one when I originally soldered it. I removed the old microcontroller and replaced it with the new one. I checked the voltages again, and there were no 
+        errors. This time the debugger correctly connected with the microcontroller, so my mistake with the first one did not appear to permanently damage the board. It should be 
+        noted I burned myself soldering the replacement microcontroller, so refer to the age old adage to decrease the amount of mistakes one makes (and thus less chance of injury): 
+        'Measure twice, cut once.' I soldered the five LEDs and their associated resistors to the board so I could test sending the microcontroller code. I made sure that the 
+        cathode (the side with the dot) went to ground. Using a toggle command, I tried to turn on and off each LED on a delay. I was able to do this successfully with the first 
+        three LEDs, but the last two did not work. Using the multimeter, I determined that the voltages on the last two were significantly higher when the signal was high. I removed 
+        the offending LEDs and resistors, and I powered the board again, measuring from the first pad of the removed resistors and going to ground with the multimeter. The voltages 
+        read the same as the voltage across the working LEDs. I replaced the resistors and LEDs with new ones, and when I powered it up again, the fifth LED worked, but not the 
+        fourth. When I removed the LED, I discovered that the metal pad was no longer there. To fix that, I created a solder bridge between the resistor and LED. This took many 
+        tries, as I had to position the two closer together while ensuring they were connected to their working pads. I also did this for the fifth LED as its metal pad was also 
+        gone. When I powered it, all the LEDs worked as they were supposed to. The next thing I will connect to the board are the LCD and the keypad, as I have this code written so 
+        that I can test it, and also it is the portion of the project I am most responsible for.<br>
+        <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjGiNDdra-EAxVuHNAFHUjFAWsQFnoECA0QAQ&url=https%3A%2F%2Fwww.st.com%2Fresource%2Fen%2Fdatasheet%2Fstm32f407vg.pdf&usg=AOvVaw20CweAygIF5PfD94XSkDhw&opi=89978449">STMF405 Datasheet</a><br>
+        <a href="https://community.st.com/t5/stm32-mcus-boards-and-hardware/st-link-v2-clone-cannot-upgrade-firmware-so-cannot-proceed-with/td-p/74746">ST-Link Forum</a><br>
+        <img src="Images\Debugging LEDs Code.png" width="600" height="500"></img><br>
+        <img src="Images\Debugging LEDs Result.jpg" width="500" height="500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 3/14/2024<br>
+      <b>Start Time:</b> 3:00 p.m.<br>
+      <b>Work Time:</b> 2.5 Hours<br>
+      <p>
+        I spent a good amount of time with Joe trying to find the mail people since our PCBs came in, but no luck. In the meantime, I used the plastic containers to sort out the 
+        beginning parts for soldering, including the DC jack, the Buck converter, the microcontroller, the external clock, and the reset button, along with all associated capacitors 
+        and resistors with each component. I then checked to see if all our components were mailed in, which they were, and checked them off accordingly in our bill of materials 
+        document. I finally received the PCBs, and I began work on attaching the power components to the hardware PCB. I attached the jack, but made an error and over-soldered the 
+        power pin to the back side, making it connected to the ground plane, so I had to fix that. I connected the bulk capacitor, the Buck converter, and its two associated 
+        capacitors. For the bulk capacitor I shortened and even the leads so it did not rock too much. It is possible to shorten them even more if my teammates so desire. For the 
+        Buck converter I used a right angle 1x4 header, properly soldering both ends, and clipping the ends so that they do not jut out. After cleaning and drying it, I powered the 
+        board and tested the voltage using the multimeter. The 5V connection across the capacitor read 5.405V, and the voltage across the capacitor attached to the Buck converter 
+        read 3.244V. Both readings are within 10% of the desired voltage, so that is most likely okay. I will solder the microcontroller and its components tomorrow. I accidentally 
+        deleted the photo of the board, so please refer to the picture above for what the soldering looks like for the power components.<br>
+      </p>
+
+      <b>Date Reported:</b> 3/14/2024<br>
+      <b>Start Time:</b> 4:00 a.m.<br>
+      <b>Work Time:</b> 1.75 Hours<br>
+      <p>
+        The reason why the ECE 36200 code did not work because it was built for SystemWorkbench and not for CubeIDE, so a library 
+        specific to this IDE will be needed in order to implement the LCD code. I found a tutorial on how to program an LCD using 
+        CubeIDE. I followed the video, verifying that I had done my wiring correctly. However, as I got further in the video, I 
+        realized that the part the person used was different, meaning in broad strokes the tutorial was good, I would need something 
+        more specific to most likely make more progress. Nonetheless, I tried downloading the files found in the description and 
+        modifying them to fit my needs, but after skimming through the code specific to the LCD, I surmised that because it was two 
+        different manufacturers, it would be too different to try again. However, I knew that if I could find the library specific to 
+        the ILI9341, I could very easily implement this. I shortly found another tutorial online specific to my LCD, and I copied over 
+        the code relevant to the ILI9341. I also copied over a portion of the main file that tested the contents of the LCD code. I 
+        had to change the top of the ILI9341 header file since I used different pins on the microcontroller. After fixing that, I went 
+        to the .ioc and changed the SPI mode to Transmit Only Master, and based on recommendations on the website, I changed the 
+        prescaler to 64 and the system clock to 72 MHz. I will most likely fiddle with this later since we probably want a faster 
+        refresh rate. After building and running the code, it correctly modified the screen by turning it black, drawing a red 
+        rectangle around the perimeter, and then erasing the rectangle. The LCD code should be good to use for general purposes.<br>
+        <a href="https://www.youtube.com/watch?v=93xUUvEUbQI&t=187s">Wrong LCD Tutorial</a><br>
+        <a href="https://www.youtube.com/watch?v=3qnB5gsp8eE">Correct LCD Tutorial</a><br>
+      </p>
+
+      <b>Date Reported:</b> 3/13/2024<br>
+      <b>Start Time:</b> 8:30 p.m.<br>
+      <b>Work Time:</b> 4 Hours<br>
+      <p>
+        I created a new project on my desktop, and I set up the .ioc as last time, except I changed PA15 to be a hardware output for 
+        the SPI, and I changed PB4 to be an output instead of SPI1_MISO. I copied over the entirety of the lcd.h file from ECE 36200 
+        except the Picture portion at the bottom since pictures will not be used in the project. I copied the beginning of the lcd.c 
+        file, careful to change the definitions of the pins by how it is in the schematic rather than the default. I changed the 
+        SPI_CR2_DS variable to SPI_CR1_DFF since this is how the F407 changes the data size from 8 bit to 16 bit. At this point I 
+        copied and modified everything up to LCD_WriteRAM_Prepare. I implemented the rest of the functions in the lcd.c file except 
+        for the picture function. I made small changes to formatting and syntax to make the code more readable, but I did not change 
+        any logic. I went into the main function of the main file to test the LCD by using the setup function and then setting the 
+        entire screen to red. However, the program would not work. When I debugged it, I discovered that it did not like the 
+        LCD_Reset function call in the LCD_Init function. I commented out all nano_wait function calls as it was causing the debugger 
+        to shut down. After that, I discovered a small error where I forgot to change it from CR2 to CR1 when I modified the data 
+        size. I then discovered that the SPE bit, which enables the SPI, never gets set in the generated code, so I set it before the 
+        LCD functions. I also confirmed that the clock was correctly turning on. It appears as if the DR register is not being 
+        written the correct value, but I have no clue as of now as to why. According to a datasheet I found, it appears that the 
+        clock speed has to be at least 6.35 MHz, which means my clock speed is good at 84 MHz. I adjusted the value of the color I 
+        was sending in, but the DR register still got written to 0xffff (white) no matter what. I will most likely have to consult 
+        help as to why this does not work.<br>
+        <a href="https://cdn-shop.adafruit.com/datasheets/ILI9341.pdf">LCD Datasheet</a><br>
+      </p>
+
+      <b>Date Reported:</b> 3/13/2024<br>
+      <b>Start Time:</b> 5 p.m.<br>
+      <b>Work Time:</b> 1 Hour<br>
+      <p>
+        I used the user manual below and skimmed through it, getting a grasp of how the LCD works. I then went into the LCD code 
+        provided by ECE 36200 and tried identifying important functions. It appears that the ECE 36200 code is based on the code 
+        provided by the user manual, so I am going to use it. I implemented the TFT_Select, the TFT_Reset, and the TFT_Reg_Select 
+        functions. Because my laptop is not computationally robust, it took a while to build the project and return the errors. The 
+        errors I got coincide with undefined variables (such as SPI_SR_BSY). I went back into the LCD code and found that these 
+        values are defined custom, which do not appear in the CubeIDE. So, I am going to pivot to working on my desktop at home 
+        because it will allow me to build the project faster, as well as copy over code much faster.<br>
+        <a href="http://www.lcdwiki.com/res/MSP2202/2.2inch_SPI_Module_MSP2202_User_Manual_EN.pdf">LCD User Manual</a><br>
+      </p>
+
+      <b>Date Reported:</b> 3/13/2024<br>
+      <b>Start Time:</b> 2:15 p.m.<br>
+      <b>Work Time:</b> 2.5 Hours<br>
+      <p>
+        I met with Joe and he taught how to do the soldering for the microcontrollers. He taught me how to line up the corners and solder opposite corners one a time so it is easier 
+        to line up. He then showed me how to get rid of any bridging. I soldered the rest of the microcontroller, and then he showed me how to clean it in the sink, as well as check 
+        it under the microscope for any bridging I had missed. There was some, so he showed me how to get rid of it using the copper strip. After that, he showed me how to remove the 
+        chip. Because many of the pins were bent, I had to spend time fixing them before I could solder the chip again. Some of the pins broke, which I thought was fine since this 
+        was just a practice board. The reason why the pins were bent was because I removed the bridging in the incorrect way. I scraped across the pins rather than along to remove the 
+        extra solder. When I did the soldering for the board again, I correctly removed the bridging, which caused no extra bent pins. I removed the chip, soldered it again, and 
+        removed it one final time to get extra practice. Since the boards are coming either today or tomorrow, I cleaned the work station, throwing away trash and opening up all of 
+        the packages we got, verifying I have at least some of the parts where I can begin testing the final soldered board. We have the stuff for power, so I should be all good to 
+        solder.<br>
+      </p>
+
+      <b>Date Reported:</b> 3/12/2024<br>
+      <b>Start Time:</b> 2:45 p.m.<br>
+      <b>Work Time:</b> 1 Hour<br>
+      <p>
+        Our PCBs are most likely coming in Thursday, so I decided to get in some practice with soldering. Joe showed me the basics for soldering 0805s, turning on the solder to the 
+        max temperature, using the flux to prep the solder, applying and caring for the tip, and finally actually attaching the parts to the board using tweezers. I then began to 
+        practice on my own, but I struggled. I discovered that it was due to two errors. The first was I was not applying enough of the paste to the soldering tip. It must be silver 
+        before one applies solder to it. The second error I found was that I was using the incorrect resistors to practice soldering. I had accidentally grabbed 1206s instead of 0805s, 
+        which is what the footprint was on the dummy boards. I grabbed the correct sized resistors, and I found I had a much easier time in soldering, getting all of them attached 
+        except for one. Tomorrow I am going to practice some more, especially with soldering microcontrollers.<br>
+        <img src="Images\Soldering Practice 0805.jpg" width="500" height="500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 3/11/2024<br>
+      <b>Start Time:</b> 5:45 p.m.<br>
+      <b>Work Time:</b> 0.75 Hours<br>
+      <p>
+        I wired the LCD to the STM32F407 board as specified by the schematic I made. This is to make the transfer of code from the testing to the actual microcontroller easier. The 
+        pinouts for the LCD are the exact same between the F407 and the F405, so there should not be any issues in copying the code over. I then tried to get CubeIDE set up to work 
+        with the LCD. I enabled the pins I needed to their correct settings (i.e., setting the PB pins to SPI1_...), but for PA15 it gave me a warning when I tried to set it to 
+        SPI1_NSS. When I tried to use an alternate pin, I got the same warning. I have no idea what the issue is, so I decided to look at it later.<br>
+      </p>
+    </div>
+
+    <button class = "accordion">Week 9</button>
+    <div class = "panel">
+      <b>Date Reported:</b> 3/8/2024<br>
+      <b>Start Time:</b> 11:15 a.m.<br>
+      <b>Work Time:</b> 1.5 Hours<br>
+      <p>
+        I made slight changes to my PCB, which included adding ESD protection resistors of 1k ohm strength to the data lines of the LCD, modifying the traces from the USB to the 
+        microcontroller that were longer than necessary, adding a large ground via of size 48 mil to the top of the board for testing, and bringing out 5 vias from the 
+        microcontroller for possible use if other pins fail, or if we need additional pins. All of these changes were recommendations from the course staff. I then regenerated the 
+        Gerber files and helped Landon order the PCBs.<br>
+      </p>
+      
+      <b>Date Reported:</b> 3/6/2024<br>
+      <b>Start Time:</b> 12:15 p.m.<br>
+      <b>Work Time:</b> 3 Hours<br>
+      <p>
+        The team and I created a list of immediate tasks we need to complete in the upcoming weeks in order to get the entire project in a bare minimum working order so that we can 
+        expand upon each feature to deepen the functionality as a group, rather than have certain teammates without tasks to complete because someone else is taking too long with a 
+        task they should not be putting that much time into. I assigned the order of the tasks and who should complete them, and the other members revised. After that I adjusted 
+        the power plane such that it was at least 10 mils away from the PCB edge so that it fits manufacturing standards. I then fixed the thermal relief issues by adding 25 mil 
+        traces from the pads that were causing the errors to their respective plane. I then added a header to the shopping list that would be used to connect the Buck Converter to 
+        the board, as well as serve as an extra part for all of the headers just in case there are any issues. I created the Gerber files for the PCB and uploaded it to the JLC 
+        website to check to see if there were any errors, and there did not appear to be. Lastly, I began work on a software flowchart that will be used to map out the entirety of 
+        the code that exists on the microcontroller. This is to make it easier to work in parallel with the firmware.<br>
+        <img src="Images\Prioritized List of Tasks.jpg" width="350" height="500"></img><br>
+        <a href="https://www.pololu.com/product/965">Breakaway Header Website</a><br>
+        <img src="Images\Flowchart 1.png" width="750" height="500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 3/5/2024<br>
+      <b>Start Time:</b> 8:15 a.m.<br>
+      <b>Work Time:</b> 3 Hours<br>
+      <p>
+        I updated my PCB and schematic based on the feedback I got from the MTDR. I connected the power planes by extending the PCB a little on the top, making sure the power plane 
+        went all the around/through the power jack down to pin 4 of the MicroSD Reader. I also brought out some of the 3.3V pins of the microcontroller to power planes to ensure 
+        they were connected. I got rid of the bridge between pins 21 and 22 and instead connected the two with traces and vias. This was to make sure it did not appear the pins were 
+        connected by accident. I then went to the schematic, fixing the splayed out version that somehow ended up on the website by bringing the components closer together, and I 
+        added text labels to each section to guarantee no confusion on which part is which. I did the footprint verification for the MicroSD Reader, the 6 pin connectors, the USB, 
+        and the power jack. I shifted the USB to the left such that the part is on the edge of the board. I had mistaken the purple line of the footprint as the edge when it is 
+        actually the gray edge. If you do it by the purple edge, the flanges of the USB input will not fit onto the board. I also double checked to see if the pins of the headers 
+        for the other components were a mil apart, and they were. I then swapped out the ESD protection with a 4 pin bidirectional component that the course staff recommended. 
+        This meant only one component was needed rather than two, and it is easier to solder. I then changed the schematics of the power jack and the USB input so that the shields 
+        are disconnected, that way the DRC does not show errors for unconnected components. Now the only errors I have concern the thermal relief, which I do not believe is an error, 
+        but I will consult with the course staff. I gave all the parts that needed to be ordered to Landon. I checked the storage to see if it had all the capacitors and resistors 
+        we needed. Everything is accounted for except for the 40K ohm resistors used for pull ups and pull downs. However, they have 39k ohm resistors, which will most likely work. 
+        I will consult course staff just to make sure.<br>
+        <a href="https://www.digikey.com/en/products/detail/texas-instruments/ESDS304DBVR/9659607">ESD Protection Datasheet</a><br>
+        <img src="Images\Probably Finished Schematic.png" width="750" height="500"></img><br>
+        <img src="Images\Probably Finished PCB.png" width="500" height="750"></img><br>
+      </p>
+    </div>
+
+    <button class = "accordion">Week 8</button>
+    <div class = "panel">
+      <b>Date Reported:</b> 2/29/2024<br>
+      <b>Start Time:</b> 10:00 a.m.<br>
+      <b>Work Time:</b> 0.5 Hours<br>			
+      <p>
+        I added the PCB file to our website, as I had forgotten to do so yesterday. I also consulted with the course staff after 
+        the presentation concerning the DRC checks I had questions on, as well as a couple other things. I need to double check 
+        that every portion of the power plane actually has a connection, and I also need to removing any sort of bridging of wires 
+        between components. I also need to fix the schematic I uploaded to the website, as it is weirdly splayed out.<br>
+      </p>
+
+      <b>Date Reported:</b> 2/28/2024<br>
+      <b>Start Time:</b> 7:30 a.m.<br>
+      <b>Work Time:</b> 3 Hours<br>
+      <p>
+        I added in my screenshots of the PCB and schematic to our presentation, as well as edited small portions of it, mostly 
+        checking for grammatical errors. We then did a run through of the presentation, clocking in at 41 minutes roughly. This 
+        gives us enough time for questions without going over the mark. Results of the presentation can be seen on our website.<br>
+      </p>
+
+      <b>Date Reported:</b> 2/27/2024<br>
+      <b>Start Time:</b> 1:00 p.m.<br>
+      <b>Work Time:</b> 5.5 Hours<br>
+      <p>
+        Neil and I searched for a new Micro SD to use since the one with the headers would not work. We found one that is just a 
+        simple Micro SD Reader, which fits our purposes well. The only hard part of determining whether or not the product would work 
+        was verifying we could wired it up properly to SPI. Using the schematic of the Micro SD Reader on the back of the LCD, I 
+        compared it with the datasheet, checking off the lines that would be needed for SPI to work. It turns out that the part we 
+        chose would work; it would just require three pull up resistors, all of 40K ohm value wired from the DAT3/CS line, 
+        SPI2_MOSI/CMD, and SPI2_SCK/DAT0. The wiring was essentially the same as the previous, but the pinout was slightly different, 
+        as was the number of unused pins on the part according to the datasheet. The schematic and footprint were acquired from the 
+        datasheet and imported in. I then added 5 LEDs to the PE2-PE6, as these were all adjacent to each other and on the PCB the 
+        space was the easiest to free up. I connected 150 ohm resistors to each LED, using one of our ECE 36200 boards as reference. 
+        Given the new SD reader, the PCB can be even more optimized. I moved the SD card to the edge of the PCB, lining it up with 
+        the other parts on the left, giving each part roughly 12mm of room on either side, and I then did the tracing in accordance 
+        with the schematic. I then moved the microcontroller down and to the left now it had more space. I then discovered that 
+        the wiring for the decoupling capacitors were backwards underneath the microcontroller, so I redid the tracing, making 
+        the wiring much cleaner. I also cleared up a lot of vias with the knowledge that the ground plane would automatically 
+        connect to the grounds of the capacitors. I adjusted the timer channels for the 6 pins connectors, giving myself space to 
+        place the LEDS to PE2-PE6. I placed the LEDS as close as possible, and then adjusted the timer channel lines to their proper 
+        positions. I then flipped the positioning of the LCD and keypad, as the wiring was crossing and causing a lot of unncessary 
+        routing. I deleted the intermediary lines, switched the headers, reconnected the deleted lines, and adjusted the traces so 
+        that they were space efficient. I then added the power busses from the power input to the bulk capacitor, then to the 
+        Buck converted, and finally to the first 6 pin connector. I added in the 3.3V power plane, making sure it covered all the 
+        necessary parts, then I verified it properly connected to everything that needed power. I also adjusted the vias such that 
+        the holes were 0.6mm and the diameter was 1.2mm for the 0.6mm traces for the power and ground. I added in the ground plane, 
+        making sure it properly connected with the decoupling capacitors, and lastly I added in vias for all the ground of each 
+        component, routing traces to connect properly to ground. I ran the DRC check, and found I had a lot of small wires that 
+        were under component pads that should be deleted. I deleted them. The only issues that showed up on the DRC was the shields
+        not be connected, which can be ignored, thermal relief pads being added in, which I doubt needs to happen and I will consult 
+        with course staff to verify, and one peculiar area where it said the power plane was not connected to itself. I will have 
+        to consult with course staff to verify what this error could mean. I then added seven 2.8mm mounting holes to the schematic 
+        and to the PCB, placing them in locations with free space that were not close to the PCB edge nor to any hardware or tracing. 
+        Lastly, I added in extra silkscreen labelings, including pin 1 labels for the microcontroller, as well as the our names, 
+        class, team number, and a fun little message for anyone who sees the PCB. I grabbed screenshots of each component, and I 
+        will add those to the presentation tomorrow.<br>
+        <a href="https://www.digikey.com/en/products/detail/cui-devices/MSD-1-A/21799641">Micro SD Card Reader SMD Datasheet</a><br>
+        <a href="http://www.lcdwiki.com/res/MSP2202/MSP2202-2.2-SPI.pdf">LCD Micro SD Card Reader Schematic</a><br>
+      </p>
+
+      <b>Date Reported:</b> 2/26/2024<br>
+      <b>Start Time:</b> 8:00 p.m.<br>
+      <b>Work Time:</b> 3 Hours<br>
+      <p>
+        After sending my PCB to the course staff, I got feedback about failing DRC checks, incorrectly placing the headers for the 
+        keypad and LCD, not including debugging LEDs, and various small errors related to unconnected wires and power. I moved the 
+        LCD and keypad headers to the bottom of the board. I spread out the 6 pin connectors to take up most of the right side of 
+        the board, giving myself more space for the tracing. I then redid the tracing for the connectors, decluttering the crossings 
+        between the various timer channels. I added pull down resistors to the rows of the keypad so that it functions correctly. I 
+        then moved the microcontroller down a little bit since a lot of the parts had moved downward as well. This involved adjusting 
+        the tracing I had fixed, disconnecting certain lines and then adding them back together after the movement. I ran out of time, 
+        so I was not able to add in the power and ground planes. As I was finishing up, I realized that the SD card could not be attached 
+        to the board because it used header pins. The header pins do not allow for a direct connection with a breakout board, so either 
+        we need to move the SD card reader to a different spot or find a module that is only the reader and none of the pull up 
+        resistors, and then add the pull up resistors ourselves.<br>
+        <img src="Images\Retraced PCB.PNG" width="400" height="500"></img><br>
+      </p>
+    </div>
+
+    <button class = "accordion">Week 7</button>
+    <div class = "panel">
+      <b>Date Reported:</b> 2/23/2024<br>
+      <b>Start Time:</b> 12:30 p.m.<br>
+      <b>Work Time:</b> 6 Hours<br>
+      <p>
+        Neil sent me a new USB to use that is just the metal connection without the breakout board, so I replaced the footprint with 
+        this new one and appropriately wired it in the schematic. It used the same connections, just in a different order. I then did 
+        all the traces for the PCB. I began with the on the left side of the PCB since they cannot move. I did all the traces for the 
+        the USB with the ESD protection, not doing the wiring for the power and ground since I will be using planes because there 
+        are many components that can share this plane. I did the tracing for the ST-Link, which was simply connecting the SWDIO and 
+        SWCLK to the microcontroller, as well as connecting the NRST pin. For I connected  the reset buttonthe debouncing resistor 
+        and capacitor to the NRST of the ST-Link since it was close by. Last of the static components I did was the MicroSD Reader. 
+        I figured out that the microcontroller could be rotated such that the SPI2 pins for the reader would be close, as well as 
+        having the SPI and GPIO pins for the LCD and keypad respectively close to their components. I followed the schematic and 
+        connected the tracings for the pull up resistors for the LCD, and then switched to the LCD and keypad. I connected the 
+        ESD for the keypad (the 1k ohm resistors) to the keypad, then moved the keypad closer to the micro once I got a feel for the 
+        required spacing, then wired it appropriately to the microcontroller. I also did the pull down resistors for the row pins 
+        of the keypad and placed them nearby. For the LCD I had to wire some of the SPI pins on the underside and connect them back 
+        to the microcontroller with vias in order to save space. Because the keypad and LCD are going to be connected with cables to 
+        the header pins. I placed them close to the microcontroller so the tracings would be short. Throughout this process I had to 
+        make the slightest adjustments in order to properly fit the tracings and vias while also keeping the PCB design relatively 
+        neat. Landon sent me the footprint for the six pin connectors that will be used to connect the microcontroller to the PCB 
+        strips he designed. He also sent me a list of what the connections should be from top to bottom. I added 4 six pin connectors 
+        to the schematic, and used the footprint to figure out which timer should go to which connections. From top to bottom, I did 
+        Timer 4, Timer 1, Timer 3, and Timer 5, all in ascending order of their channels. This amounts to 16 connections for the LEDs. 
+        I then connected the timers, and after that the I2C clock and data lines for the Hall Effect sensors. This required lots of 
+        tiny adjustments to make the PCB efficient in using space. Lastly I did the the power for the entire board. I connected the 
+        5V and GND from the jack to the first six pin connector as well as to the LDO. From the LDO I connected the 3.3V to the six 
+        pin connector. I added a 3.3V power plane to the front, encapsulating all the components that required 3.3V, leaving the jack, 
+        connectors, and reset button out of it. I added the ground plane to the back, also leaving the jack and connectors out of it, 
+        but keeping in the reset button since it is wired to ground. I then wired all of the grounds of each component to the back 
+        using vias. I then skimmed the board to see if there were any errors and did not find any. I am going to have Landon help me 
+        look this board over before we send it to the course staff to verify everything is correct. We will most likely bring some of 
+        the GPIO pins that are easier to access out with vias for debugging LEDs and other purposes.<br>
+        <a href="https://www.snapeda.com/parts/USB3085-30-A/Global%20Connector%20Technology/view-part/?ref=search&t=usb%203085">USB Datasheet</a><br>
+        <a href="https://www.digikey.ee/en/products/detail/te-connectivity-amp-connectors/640456-6/109008">Six Pin Connector Datasheet</a><br>
+        <img src="Images\Connection Order.png" width="350" height="800"></img><br>
+        <img src="Images\Schematic With Connectors.png" width="750" height="500"></img><br>
+        <img src="Images\PCB With Planes.png" width="500" height="500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 2/22/2024<br>
+      <b>Start Time:</b> 8:45 a.m.<br>
+      <b>Work Time:</b> 3 Hours<br>
+      <p>
+        I verified that the MicroSD Reader was positioned properly. I began doing the traces for the microcontroller. I began connecting the decoupling capacitors close to their power 
+        and ground pin pairs. There were a few pins that did not have a ground pin associated with its VDD, so I just connected it to the closest power pin. After seeing the clutter, 
+        I changed it so the capacitors were on the underside of the microcontroller rathen than adjacent to it. After consulting with course staff about how to power the microcontroller 
+        from the LDO, I learned that vias cannot be directly located on pads, so I had to slightly adjust the positioning the of capacitors so account for spacing out the vias away 
+        from the pads but also underneath the microcontroller. I also learned that the 470uF bulk capacitor had the wrong footprint, so I changed it to a 10 x 12.5 mm electrolytic 
+        capacitor, based off a datasheet I found for 470uF. I also added the bulk capacitors associated with the decoupling capacitors under the microncontroller, positioning them 
+        closer to the correct bulk capacitors. I then began working on power, using 0.6 mm traces for the power bus going from the DC jack and changing the orientation of the bulk 
+        capacitor to make it fit better since the size changed substantially with the change of footprint. I am going to most likely use power and ground planes on both sides of the 
+        PCB, so I am not going to focus on wiring the power directly to the microcontroller and instead do the traces for the components and modify the positioning of them as to 
+        decrease the area of the PCB to cut down on costs.<br>
+        <a href="https://www.electron.com/electrolytic-capacitor-jamicon-skr471m1cfbbm-p52891/">470uF Capacitor Datasheet</a><br>
+        <img src="Images\Decoupling Capacitors PCB.png" width="500" height="500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 2/21/2024<br>
+      <b>Start Time:</b> 12:30 p.m.<br>
+      <b>Work Time:</b> 4.5 Hours<br>
+      <p>
+        Grace informed me that the MicroSD Reader will only be able to work on SPI2 according to information she found online, so I changed the schematic such that the SD reader was 
+        now on SPI2 and the LCD was moved to SPI1. SPI3 should not have any connections. After discussing with the course staff, I added a 470uF bulk capacitor to the power jack as 
+        to better help with maintaining power levels when the LEDs are turned on and off. Also with their advice, I added pull down resistors to the keypad, using 40K ohms according 
+        to the STMF405 datasheet. When I updated the PCB, I found that the ESD protection had the wrong footprint, so I revisited the datasheet and updated the footprint. I then 
+        rearranged the general positioning of the parts, moving the off board connections and reset button to the left side, such that the hex grid can be read left to right by 
+        the microcontroller. I then began specifically placing some of the parts. I will leave the microcontroller to be last, as the orientation can be adjusted to better fit the 
+        connections of other devices that require more particular positioning. I placed the power jack on the top left at (0, 0), then moved the USB port to be roughly 12 mm 
+        below. I shifted the footprint to the right 8.5 mm to account for the placement of the USB relative to the soldering connections. The measurement of the board was not 
+        specified on the datasheet, so I had to measure the relative position of the USB port on the breakout board on the screen using a caliper and use the ratio to adjust it to 
+        the real life size, since the USB port did have a measurement on the datasheet. I then moved the Micro SD Reader underneath, and moved it 35 mm to the right to account for 
+        the SD slot. I got these measurements from Grace. I may have not accounted for the width of the reader, so I might have to adjust the veritcal position later. After discussing 
+        with the course staff and my group, I changed the footprints of the keypad and LCD such that they connected to headers rather than sockets. I did this so that the parts can 
+        be connected to cables and be easily adjustable on the actual game board, as well as allow for debugging the wiring underneath the components. Because the parts are now 
+        adjustable, I just moved each of the footprints relatively close to the microcontroller so the traces are shorter. I then did the tracing for the external clock, but found it 
+        was easier to begin on the decoupling capacitors and then do the clock, since the decoupling capacitors have to be close to the microcontroller. I connected a couple of the 
+        capacitors with traces to the microcontroller, and then added back the clock. I placed the capacitors underneath so that the general signal lines can be more easily seen on 
+        top of the board. I will have to finish doing the traces for the decoupling and bulk capacitors at a later date, as well as do the tracing for all of the components on the 
+        board.<br>
+        <a href=" https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjGiNDdra-EAxVuHNAFHUjFAWsQFnoECA0QAQ&url=https%3A%2F%2Fwww.st.com%2Fresource%2Fen%2Fdatasheet%2Fstm32f407vg.pdf&usg=AOvVaw20CweAygIF5PfD94XSkDhw&opi=89978449">STM32F405 Datasheet</a><br>
+        <a href="https://www.digikey.com/en/products/detail/stmicroelectronics/EMIF02-1003M6/1852153">ESD Datasheet and Footprint</a><br>
+        <a href="https://cdn-shop.adafruit.com/datasheets/1833_MicroB_20329.pdf">USB Micro B Breakout Board Datasheet</a><br>
+        <img src="Images\Updated ESD Schematic.png" width="750" height="500"></img><br>
+        <img src="Images\Microcontroller PCB Partial Traces.png" width="750" height="500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 2/20/2024<br>
+      <b>Start Time:</b> 8:45 a.m.<br>
+      <b>Work Time:</b> 3 Hours<br>
+      <p>
+        I changed the resistors schematic for the keypad to match with the conventional zig-zag pattern. After talking with Neil and Grace, I changed the schematic and footprint of 
+        the USB connector because the original USB part was vertical instead of horizontal. This new part is a horizontal connection on a breakout board that allows for easier 
+        soldering. I also added ESD protection to the USB connector since it connects to an off board device. Neil found a module to use, which allowed for two inputs and two outputs, 
+        which meant two was needed for the USB connector. After all that, I converted the schematic to the PCB layout on KiCAD. I got an error with the reset button schematic, so I had to 
+        change it to the two pin module for it to work. I also had to rename my components since there were duplicates. I rearranged the components in the PCB layout such that it would 
+        roughly match the initial CAD of the game board. However, it will most likely be mirrored, since it would allow for the hex grid to be read left to right rather than in reverse 
+        order because the top left hex is (0, 0). I configured the components such that the decoupling capacitors were close to their associated power and ground pins, and the 
+        resistors were close to their respective components. Lastly, I moved the ST-Link port and the reset button close to the power and usb components, since that section of the game 
+        board will most like be exposed already. The next goal is to add traces to the components and find the exact distances between components.<br>
+        <a href="https://www.adafruit.com/product/1833#description">USB Micro B Breakout Board Datasheet</a><br>
+        <a href="https://www.digikey.com/en/products/detail/stmicroelectronics/EMIF02-1003M6/1852153">ESD Protection Datasheet</a><br>
+        <img src="Images\Updated USB Schematic.png" width="750" height="500"></img><br>
+        <img src="Images\Microcontroller PCB Layout.png" width="750" height="500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 2/19/2024<br>
+      <b>Start Time:</b> 2:30 p.m.<br>
+      <b>Work Time:</b> 2.5 Hours<br>
+      <p>
+        I began adding footprints to the schematic so I could later do the PCB layout. First I added the 0805 footprint to every resistor and capacitor. I switched out the button for 
+        the reset to a four pin switch since those were readily supplied in the lab. I used the datasheet to find the footprint in the database, selecting the 7.3 mm height. For the 
+        keypad I simply added a 1x8 pin socket connector. For the MicroSD Reader I used a 1x9 pin header connector. For the LCD I found a footprint within the library, using the 
+        display that showed nine pins on one end and five on the other, and I compared the size of the footprint using the measuring tool and found it matched with the measurements of 
+        the part. For the ST-Link connector I used a 2x5 pin header connector for the footprint. For the voltage regulator I used a 1x4 pin header connector. I did not like the 
+        schematic I had made for the DC power jack, so I found a symbol online, as well as the footprint, and imported both into KiCad, and I replaced the previous schematic with it. 
+        Lastly, for the USB micro connector I found a footprint within the library that matched with the footprint found in the datasheet. This part might be replaced if we decide we 
+        do not want the vertical usb connector. For all pin headers and sockets I chose vertical connectors. The next step should be doing the rough PCB layout and connected Landon's 
+        schematic with mine.<br>
+        <a href="https://www.mouser.com/datasheet/2/307/en-b3f-13826.pdf">Four Pin Button Datasheet</a><br>
+        <a href="https://www.mouser.com/ProductDetail/GCT/USB3106-30-0230-A?qs=KUoIvG%2F9IlYNdsfCNym6Fg%3D%3D">Micro USB Datasheet and PCB Footprint</a><br>
+        <a href="https://www.snapeda.com/parts/PJ-082BH/CUI%20Devices/view-part/?company=Purdue+University&amp">DC Power Jack Symbol and Footprint</a><br>
+        <img src="Images\Updated Footprint Schematic.png" width="750" height="500"></img><br>
+      </p>
+    </div>
+      
+    <button class = "accordion">Week 6</button>
+    <div class = "panel">
+      <b>Date Reported:</b> 2/16/2024<br>
+      <b>Start Time:</b> 3:00 a.m.<br>
+      <b>Work Time:</b> 2 Hours<br>
+      <p>
+        I connected the keypad schematic to the microcontroller schematic, simply picking 8 consecutive GPIO pins with no important 
+        alternate functions. Using the same manual from last time, I properly wired the LCD to the microcontroller in the schematic, 
+        using SPI2 for the data protocol. I also wired the LED to 3.3V since backlighting is not a thing that needs to be controlled. 
+        I created a custom schematic for the MicroSD Reader, adding nine busses and wiring the proper data lines and power and ground. 
+        I used the datasheet to do this. I used SPI3 for the data line. I then modified some of the pins such that components used 
+        pins that were close to each other in pin number rather than the pin label.<br>
+        <a href="http://www.lcdwiki.com/res/MSP2202/2.2inch_SPI_Module_MSP2202_User_Manual_EN.pdf">LCD User Manual</a><br>
+        <a href="https://www.digikey.com/en/products/detail/sb-components-ltd/sku22731/16836955">MicroSD Reader Datasheet</a><br>
+        <img src="Images\Almost Full Schematic.png" width="750" height="500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 2/15/2024<br>
+      <b>Start Time:</b> 8:45 a.m.<br>
+      <b>Work Time:</b> 5.5 Hours<br>
+      <p>
+        I created a new KiCAD project on the lab computers, since my laptop cannot handle the software, and inserted a schematic for 
+        the STM32F405VGTx from the schematic library. Using week six lecture slides for ECE 47700 as a reference to do the base wiring 
+        for power, boot, external clock, etc. I wired BOOT0 to ground with a 40K ohm resistor, as specified in the STM32F405 datasheet. 
+        This is because we want to use flash memory so the microprocessor does not erase the memory in between bouts of power. I then 
+        connected the NRST pin to a button, using the schematic in the lecture slides as a reference, except I switched the resistor to 
+        40K ohm since that is the specification in the datasheet. I then added the external clock, simply wiring it in the exact same 
+        way as the lecture slides, connecting it to the PH0 pin. I then added the decoupling capacitors corresponding to each 
+        power/ground pin pair, as well as a bulk capacitor. I made an error where I replaced a decoupling capacitor with a bulk 
+        capacitor, so I will have to fix that at a later date. I followed the lectures as a guide, but used the specifications of the 
+        STM32F405 datasheet. I then added the pins to connect the ST-Link, which is needed to flash memory onto the microprocessor. I 
+        connected the ground pins to ground, added an NRST pin for possible use, and added the data input and clock to PA13 and PA14, 
+        respectively. The rest of the pins are disconnected because the power is located on the PCB. The schematic used was a 2 by 5 
+        pin connection. I then added the DC power jack for our project. Using the datasheet, I determined that for the schematic a 
+        simple two pin DC jack schematic would work. Also on the datasheet is the PCB footprint, which I will use at a later date. 
+        I set the first pin to 5V and the pin to ground. Last came the 3.3V 500mA step-down voltage regulator, which is used to convert 
+        the 5V power to 3.3V power for the external component side of the PCB. I created a custom 1x4 schematic, and using the 
+        datasheet, I set the output voltage to 3.3V, ground to ground, the input voltage to 5V, which will be drawn from the DC jack, 
+        and last disconnected the shutdown, since the PCB should never be ran in low power mode. I combined the schematics I created 
+        today with the keypad and LCD schematics I had created previously, as well as fixed the issue with the capacitors I described 
+        earlier. I also changed VBAT to connect the 3.3V, since we will not be using a battery in our project.<br>
+        <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjGiNDdra-EAxVuHNAFHUjFAWsQFnoECA0QAQ&url=https%3A%2F%2Fwww.st.com%2Fresource%2Fen%2Fdatasheet%2Fstm32f407vg.pdf&usg=AOvVaw20CweAygIF5PfD94XSkDhw&opi=89978449">STM32F405 Datasheet</a><br>
+        <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjvspH4ra-EAxUf1skDHUxbCmoQFnoECBEQAQ&url=https%3A%2F%2Fwww.st.com%2Fresource%2Fen%2Freference_manual%2Fdm00031020-stm32f405-415-stm32f407-417-stm32f427-437-and-stm32f429-439-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf&usg=AOvVaw2x8tbTRz8d9PfqXBk3qZ74&opi=89978449">STM32F405 Family Reference Manual</a><br>
+        <img src="Images\Lecture Slides Schematic.png" width="800" height="600"></img><br>
+        <img src="Images\STM32F405 Power Supply Scheme.png" width="400" height="400"></img><br>
+        <img src="Images\ST-LINK V2 Pinout.png" widt ="300" height="200"></img><br>
+        <a href="https://www.cuidevices.com/product/resource/pj-082bh.pdf">DC Power Jack Datasheet</a><br>
+        <a href="https://www.pololu.com/file/0J1498/d24v5fx-step-down-voltage-regulator-dimensions.pdf">3.3V 500mA Voltage Regulator Datasheet</a><br>
+        <img src="Images\Unconnected Schematic.png" width="700" height="600"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 2/14/2024<br>
+      <b>Start Time:</b> 12:15 p.m.<br>
+      <b>Work Time:</b> 2 Hours<br>
+      <p>
+        In lab I did not continue the schematic, and instead worked with Grace on the general flow of the software for the gameplay. I 
+        focused on aspects pertaining to the keypad input and LCD output, since it is most likely I will be working on those components 
+        given my previous experience. I heavily focused on the gameplay startup, where I determined the general flow of selecting maps 
+        and importing maps. It is very important that the game cannot start if a map has not been selected. Because the maps will have 
+        to be imported, we determined that the SD card is pretty much essential for the project, so I will be adding it to the schematic 
+        once I get all of the other components added.<br>
+      </p>
+
+      <b>Date Reported:</b> 2/12/2024<br>
+      <b>Start Time:</b> 2:45 p.m.<br>
+      <b>Work Time:</b> 1.5 Hours<br>
+      <p>
+        I watched the tutorial on KiCad Landon sent me. I focused on the schematic section, since that is the first step in designing a PCB. I first designed the keypad, since it is 
+        a very simple component. I created a keypad component and wired the four columns and rows accordingly, settig the columns to inputs and the rows to outputs. I attached a 
+        resistor to each wire, using a resistance of 1k Ohms. This resistance was used for the labs for ECE 36200. After that, I worked on the LCD. I found a helpful user manual 
+        online that held all the relevant information for wiring each pin, and I wired the LCD accordingly. Since the power of the LCD will most likely come from the microcontroller, 
+        I did not set up any power lines. Instead, I will work next on the micrcontroller schematic now that I have some experience in KiCad.<br>
+        <a href="https://www.youtube.com/watch?v=3FGNw28xBr0">KiCad Tutorial</a><br>
+        <a href="http://www.lcdwiki.com/res/MSP2202/2.2inch_SPI_Module_MSP2202_User_Manual_EN.pdf">LCD User Manual</a><br>
+        <img src="Images\Keypad and LCD Unfinished Schematic.png" width = "350" height = "500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 2/10/2024<br>
+      <b>Start Time:</b> 2:00 p.m.<br>
+      <b>Work Time:</b> 3 Hours<br>
+      <p>
+        I finished the CAD for A6, as well as did a rough layout of the PCB design. I was not sure about the footprints for each of the parts, as I had not received the relevant 
+        information from my teammates for their hardware components, and I did not have enough time to fully master KiCad such that I could easily transcribe the information, so I 
+        did not put any information down. For the CAD of the packaging, I connected the hex board with the keypad and LCD using various polygons to separate the components enough so 
+        the PCB is not too cramped. I accounted for a 25 mm gap for a possible PCB that holds the I2C IO Expanders for the Hall Effect sensors that exists between the hex board and 
+        the external components/microcontroller section. The packaging CAD and the PCB layout can be seen in A6.<br>
+      </p>
+    </div>
+
+    <button class = "accordion">Week 5</button>
+    <div class = "panel">
+      <b>Date Reported:</b> 2/9/2024<br>
+      <b>Start Time:</b> 10:15 a.m.<br>
+      <b>Work Time:</b> 4 Hours<br>
+      <p>
+        I worked on filling out my portions of A7, which included the LEDs, the HE sensors, the keypad, and the LCD. For the keypad 
+        and LCD I did not include the manufacturing and supplying information since we already have the parts and did not purchase 
+        them. I also inspected the oven and hot plate to see the maximum PCB size that would fit. I determined that the hot plate 
+        would work for the PCB strips for the hexagons. I also cleaned up the product comparison portion of A6, adding in text 
+        citations and figures. I acquired the dimensions of the keypad, LCD, and microcontroller for the CAD.
+        I imported CADs for the keypad and LCD I found online into separate files on Autocad. I then created a final drawing file and 
+        copied over the hexagon board, the keypad, and the LCD into it. I had technical issues with finding the right file type to 
+        import. The zip files in the CAD downloads included a .step file, which is the one I eventually got to appear in AutoCad. I had 
+        to convert both objects from 2D wireframes into a shaded objects with edges. I then scaled the LCD and keypad to size by using 
+        a line to measure the parts, then used the dimensions I acquired earlier to find the scale in which I needed to use to make 
+        all the parts correctly proportional to each other. I plan on combining the parts in a box and drawing a rough layout of the 
+        PCBs tomorrow.<br>
+        <a href="https://www.st.com/resource/en/datasheet/stm32f405oe.pdf">Microcontroller Datasheet</a><br>
+        <img src = "Images\Hardware Measurements.jpg" width = "300" height = "300"></img><br>
+        <a href="https://grabcad.com/library/numeric-keypad-1">Keypad CAD</a><br>
+        <a href="https://grabcad.com/library/2-2-tft-display-1">LCD CAD</a><br>
+      </p>
+
+      <b>Date Reported:</b> 2/7/2024<br>
+      <b>Start Time:</b> 12:30 p.m.<br>
+      <b>Work Time:</b> 2.5 Hours<br>
+      <p>
+        In lab we had a team meeting discussing the hardware priorities and who should tackle the different requirements we need for each hardware component. I will be working on 
+        creating the PCB design for the LCD and keypad, since I have experience wiring those, and they are simpler, since I have to do A6 and model the project during this time. I 
+        then worked on the product packaging analysis for A6. The first product I found was the Infinity Game Board and Game Table. It is a large tablet that is used to mock different 
+        board games with downloadable apps. While the similarity of the electronic gaming system is apparent, the packaging is wildly different, because we plan on the board including 
+        more physical aspects, like tokens, a keypad, and an LCD. The second product I found was the Teburu by Xplored. It is more similar to our product, simulating a dungeon crawler 
+        with some electronic aspects to facilitate the gameplay, but there are two important disctinctions: the first is that the Teburu requires continuous of a phone or computer to 
+        help run the game, and the second is that the board material is made out of cardboard. Our board does not need a third-party device to run the game, and our board will feature 
+        a plastic top that is more durable and allows for LEDs to be used underneath. A deeper analysis of the packaging similarities and differences can be found in the A6 report 
+        once it is finished.<br>
+        <a href="https://infinitygametable.com/#slide2">Infinity Game Table</a><br>
+        <a href="https://teburu.net/#games">Teburu by Xplored</a><br>
+      </p>
+
+      <b>Date Reported:</b> 2/6/2024<br>
+      <b>Start Time:</b> 3:00 p.m.<br>
+      <b>Work Time:</b> 3 Hours<br>
+      <p>
+        I tackled working on A6, specifically using CAD to model the packaging of the board. Since I did not have the measurements of the keypad and LCD on hand, I decided to focus 
+        on getting the hex grid modeled. It is important to note that the top of the board will not have ingrained hexes. Rather, dividers underneath will give the appearance the top 
+        of the board will be divided into hexes. The model I completed is merely for showing off the relative size of the hexes. I used an online hexagon solver to take the desired 
+        25 mm for the double apothem (flat side of hex to opposite flat side of hex). Using the measurements it gave me, I created a 2D drawing of a hexagon. I used an online tutorial 
+        to learn the basics of drawing in 2D. The most importants tools were the polygon drawing tool, the move and copy tools, and the point generation. I generated points such that 
+        I could attach copies of the hexagon side-to-side. I copied the larger attachments to make the process faster for generating the 16x16 hex grid. Using a tutorial for making 
+        3D models in Cutocad, I extruded the hex grid so it was 3 mm thick, which the thickness of the plastic material that will be used for the top. I went back into 2D mode, and 
+        connected the edges of the hexagons with lines, and implanted shapes inside the gaps to create the entirety of the square playing area. I will finish the model once I finish 
+        the rest of A6 not pertaining to the appendices.<br>
+        <a href="https://www.autodesk.com/education/edu-software/overview?sorting=featured&filters=individual#card-acdist">AutoCad Download</a><br>
+        <a href="https://www.gigacalculator.com/calculators/hexagon-calculator.php">Hexagon Solver</a><br>
+        <a href="https://www.youtube.com/watch?v=cmR9cfWJRUU">AutoCad Basics Tutorial</a><br>
+        <a href="https://www.youtube.com/watch?v=XSRn0maJRfg">AutoCad 3D Tutorial</a><br>
+        <img src = "Images\Hex Board Model.png" width = "750" height = "500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 2/5/2024<br>
+      <b>Start Time:</b> 1:15 p.m.<br>
+      <b>Work Time:</b> 1 Hour<br>
+      <p>
+        I watched part of a KiCad tutorial by Contextual Electronics, as well as downloaded KiCad. The tutorials were recommended by KiCad. In the tutorial I learned shortcuts and 
+        key bindings, as well as how to properly label the different components added to a design. I did not like the tutorial all that much, as I found it went too slow and it felt 
+        outdated, so I asked Landon to send me the tutorials that he is using. I will watch those videos and explore KiCad more after I finish A6. <br>
+        <a href="https://www.kicad.org/download/windows/">KiCad Download</a><br>
+        <a href="https://www.youtube.com/watch?v=iTyi3RvNoB0&list=PLy2022BX6Esr6yxwDzhqYZyuuenJE2s5B">Contextual Electronics KiCad Tutorial</a><br>
+      </p>
+    </div>
+
+    <button class = "accordion">Week 4</button>
+    <div class = "panel">
+      <b>Date Reported:</b> 2/1/2024<br>
+      <b>Start Time:</b> 8:30 a.m.<br>
+      <b>Work Time:</b> 3.25 Hours<br>
+      <p>
+        I worked in the lab on A5. I looked up different parts for the Hall Effect sensors and the LCD. For the Hall Effect sensors, I included the AH9246-P-BDI-ND, which is the 
+        sensor I had already prototyped with. I also included a SS49E Hall Effect sensor, which produces an analog output, which means an ADC will be needed to read each signal 
+        into a high or low value in order to read the character tokens. I chose the AH9246 Hall Effect sensor since the results of the experiments showed that it would work with 
+        the desired dimensions of the hex and the board, as well as require less programming for it to function, though it is significantly more expensive than the SS49E. For the 
+        LCD I included the ILI9341 2.2-inch TFT SPI LCD that is included in the lab kit for ECE 36200. I included the CFAF320480C7-035TN 3.5-inch TFT SPI LCD as an alternative, 
+        which is essentially a bigger version of the ILI9341. Because we already have the ILI9341 on hand, and I have experience programming and customizing it in ECE 36200, we 
+        chose that for the LCD. We may use the CFAF320480C7 if we desire a bigger screen for the board. A summary and comparison of all the parts can be found in our A5 report.<br>
+        <a href="https://www.diodes.com/assets/Datasheets/AH9246.pdf">AH9246-P-BDI-ND Datasheet</a><br>
+        <a href="https://www.digikey.com/en/products/detail/diodes-incorporated/AH9246-P-B/5418532">AH9246-P-BDI-ND Purchasing</a><br>
+        <a href="https://content.instructables.com/ORIG/FHV/BQO4/JVR5YV9R/FHVBQO4JVR5YV9R.pdf">SS49E Datasheet</a><br>
+        <a href="https://www.amazon.com/10pcs-Element-OH49E-Sensor-Effect/dp/B07KNKTDFK?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&psc=1&smid=A3KAKSP1F9N2ZH">SS49E Purchasing</a><br>
+        <a href="https://www.elektor.com/amfile/file/download/file/1673/product/8639/  ">ILI9341 2.2-inch TFT SPI LCD Datasheet</a><br>
+        <a href="https://www.crystalfontz.com/products/document/4944/CFAF320480C7-035TNDatasheet.pdf">CFAF320480C7-035TN 3.5-inch TFT SPI LCD Datasheet</a><br>
+        <a href="https://www.crystalfontz.com/product/cfaf320480c7035tn-320x480-3-5-inch-color-tft-display ">CFAF320480C7-035TN 3.5-inch TFT SPI LCD Purchasing</a><br>
+      </p>
+
+      <b>Date Reported:</b> 1/31/2024<br>
+      <b>Start Time:</b> 11:45 a.m.<br>
+      <b>Work Time:</b> 5 Hours<br>
+      <p>
+        I changed the high and low frequency sent to the PWM to 70 and 35 respectively, as these are two-thirds and one-third of the ARR value, which is the required specifications 
+        for the LED datasheet to send on and off signals. I also commented out the HAL_DELAY(500), which fixed the issue of the LED signal bleeding over to an LED that should be 
+        off, as well as made the LED flash almost instantly when the sensor was engaged. I detached both sensors from the board, using alligator clips and wires to connect them back 
+        so that I can use my hands to adjust the distance between the sensors. Landon helped me record values for the prototyping. Instead of just pointing the sensors straight at 
+        the magnet, we also tested different orientations of the sensors compared to each other, including side-to-side, head-to-head, and head-to-tail. Landon has the recorded 
+        values in his journal. Landon recommended a size of 25 mm from side-to-side for the hex, so I set up an experiment using three sensors spaced so it fits the dimensions above, 
+        and tried to see if a magnet would engage multiple at a time. I found that a range of 17-17.5 mm from the board to the sensor will work without error. This means one row of 
+        hexes will be 400 mm or 15.75 in across. The goal is to get the board size to roughly 20-by-20 in^2, including the keypad and LCD, so that it mirrors the size of a standard 
+        chessboard.<br>
+        <a href="https://cdn-shop.adafruit.com/datasheets/WS2812.pdf">LED Strip Datasheet</a><br>
+        <img src = "Images\Spacing Test Wiring 1.jpg" width = "500" height = "500"></img><br>
+        <img src = "Images\Spacing Test Wiring 2.jpg" width = "500" height = "500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 1/30/2024<br>
+      <b>Start Time:</b> 8:45 a.m.<br>
+      <b>Work Time:</b> 3 Hours<br>
+      <p>
+        I included a math.h header that was needed to run the tan function for setting the brightness in the pixel code and it immediately worked, getting the same output as it did as 
+        Landon's. I then pivoted to replicating my Hall Effect sensor test, except this time I would be using the CubeIDE syntax for coding, the WS2812 pixel strip to indicate when a 
+        sensor has been engaged, and an acrylic sheet that is most likely being used for the top of the board. The thickness of the sheet is 3 mm. I first tested the maximum distance 
+        the pixels would shine through the material when covered on its sides. Because the distance was relatively significant, I did not get a measurement since the Hall Effect 
+        sensors would definitely be the limiting factor. I then tested to see if the sensors would work through the material, which it did. With the help of Grace to tell me when 
+        the pixels were flashing, I measured the minimum distance between the bottom of the sheet and the top of the sensor such that the sensor was engaged. The next step is to test 
+        the minimum distance between the Hall Effect sensors such that a magnet does not engage both at the same time. I will need someone's help to watch for the LEDs and measure 
+        the distance since I will have to hold both sensors manually and move one closer to the other.<br>
+        <img src = "Images\Cube LED Test Wiring.jpg" width = "500" height = "500"></img><br>
+        <img src = "Images\Cube HE and LED Testing Code.png" width = "700" height = "500"></img><br>
+        <img src = "Images\Cube LED Test Results.jpg" width = "500" height = "500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 1/29/2024<br>
+      <b>Start Time:</b> 12:30 p.m.<br>
+      <b>Work Time:</b> 3.75 Hours<br>
+      <p>
+        I downloaded the CubeIDE and tried to set up a small program from a starter tutorial to make a light flash on the development board. I was able to achieve this after three 
+        hours. I experienced many technical issues involving STM32, first trying to install it on the lab computers, and finally installing it on my own laptop. It took several 
+        retries before I was able to successfully do it. I spent the remainder of the time trying to get Landon's code to work on my device using a modified version of the LED 
+        tutorial. The modifications I made were adjusting the clock divisions such that the output for each clock was 84 MHz. I also changed the ARR of TIM1 to 104 so it divides
+        into 800 KHz, which is needed for the LEDs. I was not able to get the LEDs to flash. I suspect it is not a coding issue, but an issue with the IDE, but I do not know what
+        the issue could be. Further work will have to be done tomorrow to fix it.<br>
+        <a href="https://www.st.com/content/st_com/en/stm32cubeide.html">STM32 CubeIDE Download</a><br>
+        <a href="https://medium.com/vicara-hardware-university/smt32-project-setup-with-cubeide-947974baf713">CubeIDE Starter Tutorial</a><br>
+        <a href="https://controllerstech.com/interface-ws2812-with-stm32/">LED CubeIDE Tutorial</a><br>
+      </p>
+    </div>
+
+    <button class = "accordion">Week 3</button>
+    <div class = "panel">
+      <b>Date Reported:</b> 1/25/2024<br>
+      <b>Start Time:</b> 8:30 a.m.<br>
+      <b>Work Time:</b> 3.25 Hours<br>
+      <p>
+        I worked in the lab with Grace on updating the project description and the PSDRs. For the project description we focused more on 
+        explaining each part of the project, as well as clarified the specific attributes of how the hardware and software interact. We also 
+        included stretch goals that gave us a better picture of the entire scope of the project. The stretch goals are focused on giving the 
+        game more depth and making it more fun, rather than adding additonal necessary attributes. For the PSDRs, we separated them and cut 
+        out the keypad and LCD, instead focusing on the LEDs, Hall Effect sensors, and the USB for hardware, and keeping the application and 
+        gameplay for software. Additional PSDRs that we did not include, but are still necessary to the project, are the keypad, the LCD, 
+        and parsing the USB information. All of this information can be found on our team website. I continued with the timer pdf from 
+        yesterday to get an LED on the WS2812 to show a color. The changes I made are minimal, and can be seen in the code below. 
+        Landon got the LEDs to work using the CubeIDE, so I will instead pivot from SystemWorkbench and use CubeIDE. I suspect that 
+        my code did not get the right clock frequency due to the TIM1 frequency conflicting with the reported 100 MHz max frequency 
+        set on the microcontroller (according to the documentation), and I did not properly connect the TIM1 address to the DMA. The 
+        next step is to find a material that properly shows the LEDs, find a Hall Effect sensor that works well through the material, 
+        determine the size of the magnet, the size of each hex, and the size of the board. Also in my code I follow the tutorial and 
+        set the high bits to 70 and low bits to 35, to see if that would work. It did not.<br>
+        <img src = "Images\LED DMA and PWM Code.png" width = "500" height = "500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 1/24/2024<br>
+      <b>Start Time:</b> 12:15 p.m.<br>
+      <b>Work Time:</b> 5 Hours<br>
+      <p>
+        I explained my Hall Effect and LED code to Landon. I expanded my work upon testing the LEDs, but I did not achieve much success. I 
+        tried following code from the tutorial from last time, a timer guide I found online, and code from labs in ECE 36200. No matter what
+        combination of bits I turned on and off, I did not achieve any measure of success of turning on one bit. I will have to consult the 
+        course staff in order to continue my work. I figured out that the DMA should be DMA2_Stream1 Channel 6 according to the STM32F407 
+        datasheet, since it connects to TIM1. I also figured out how to set up the array of bits that determine whether to send a high or a 
+        low signal, but I do not think I am sending the bits in the correct fashion. According to the WS2812 datasheet seen in yesterday's 
+        report, in order to send a 0, the high signal should be on for a third of the time. Since I set the ARR to 210 - 1, I set the low 
+        signal to 70 and the high signal to 140. I sent the bits as an array to the DMA. I started following the example in the timer pdf 
+        below, but I did not have enough time to fully explore what the code means.<br>
+        <a href="https://www.st.com/resource/en/application_note/an4776-generalpurpose-timer-cookbook-for-stm32-microcontrollers-stmicroelectronics.pdf">STM32 Timer PDF</a><br>
+        <img src = "Images\STM32 Timer Example.png" width = "600" height = "300"></img><br>
+        <img src = "Images\LED Array Code.png" width = "400" height = "300"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 1/23/2024<br>
+      <b>Start Time:</b> 1:30 p.m.<br>
+      <b>Work Time:</b> 4 Hours<br>
+      <p>
+        I worked in the lab on testing the strength of AH9246-P-BDI-ND Hall Effect sensor with circular magnets of various diameters, first 
+        by testing a 15mm and a 6mm magnet with a singular sensor, using an LED to visually see when the sensor is activated. I then tested 
+        using two sensors to see what is the minimum distance between the two such that the magnet does not activate both at the same time. 
+        Since this testing did not consider how the magnetic strength is varied due to the material for the top of the board, another round 
+        of testing will have to be done with that in consideration. It is expected that either the sensitivity of the sensor will have to 
+        increase or the sizes of the hexes (and subsequently the distance between the sensors) will have to be decreased. In my wiring I 
+        spaced out the sensors one pin closer or further and measured the distance to find the smallest distance where the magnet does not
+        turn on both sensors.
+        The WS2812 LEDs will have to be tested to find the material we will use for the top of the board. Using code from ECE 36200 labs as 
+        a reference, I set up the timer on PWM mode and the DMA to send data to the LEDs. The tutorial I used below did not use the same IDE 
+        nor the same microcontroller as me, so I had to manually code the microcontroller rather than select different settings and following 
+        the exact guide. I used TIM1_CH1 on PWM mode, setting the timer to 800 KHz, and I set the DMA to memory-to-peripheral, but I could 
+        not figure out what the address of the memory or the address of the peripheral should be. In my wiring I simply followed the datasheet,
+        and included an LED to tell me if PA8 was sending a signal.<br>
+        <a href="https://www.diodes.com/assets/Datasheets/AH9246.pdf">Hall Effect Sensor Datasheet</a><br>
+        <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjegqCsgPyDAxX1AzQIHZWqAQoQFnoECBEQAQ&url=https%3A%2F%2Fwww.st.com%2Fresource%2Fen%2Freference_manual%2Frm0090-stm32f405415-stm32f407417-stm32f427437-and-stm32f429439-advanced-armbased-32bit-mcus-stmicroelectronics.pdf&usg=AOvVaw2JuhDmHLBnKkg4XP84cF5P&opi=89978449">STM32F407 Family Reference Manual</a><br>
+        <img src = "Images\Hall Effect Testing Wiring.jpg" width = "200" height = "300"></img><br>
+        <img src = "Images\Hall Effect Testing Code.png" width = "400" height = "300"></img><br>
+        <img src = "Images\Hall Effect Testing Results.jpg" width = "600" height = "300"></img><br>
+        <a href="https://cdn-shop.adafruit.com/datasheets/WS2812.pdf">LED Strip Datasheet</a><br>
+        <a href="https://www.st.com/en/microcontrollers-microprocessors/stm32f407vg.html">STM32F407 Datsheet</a><br>
+        <a href="https://controllerstech.com/interface-ws2812-with-stm32/">LED CubeIDE Tutorial</a><br>
+        <img src = "Images\LED Testing Wiring.jpg" width = "400" height = "600"></img><br>
+        <img src = "Images\LED Testing Code.png" width = "500" height = "500"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 1/22/2024<br>
+      <b>Start Time:</b> 1:45 p.m.<br>
+      <b>Work Time:</b> 2.5 Hours<br>
+      <p>
+        I worked in the lab on getting an IDE. I settled on STM32 SystemWorkbench after trying to get CubeIDE to work. This took two hours. 
+        I encountered issues that I could not explain, so I resorted to a familiar IDE. I tried testing out reading a Hall Effect sensor 
+        using magnets, but I was not able to get a readable value from the ODR. I suspect there is something wrong with my while loop in 
+        how I am checking to see if a value was read at all. I was only able to work on this for a very short amount of time and did not
+        gather any meaninful results, so I have no data to show. I will have to adjust my code tomorrow.<br>
+        <a href="https://www.diodes.com/assets/Datasheets/AH9246.pdf">Hall Effect Sensor Datasheet</a><br>
+      </p>
+    </div>
+
+    <button class = "accordion">Week 2</button>
+    <div class = "panel">
+      <b>Date Reported:</b> 1/19/2024<br>
+      <b>Start Time:</b> 10:30 a.m.<br>
+      <b>Work Time:</b> 3.5 Hours<br>
+      <p>
+        I worked in the lab on finishing the Functional Specification Report. I worked on the project description, the theory, and
+        the usage, while also editing over some other parts the rest of my team worked on. I consulted with our TA on WS2812B pixels
+        and how much current each one draws. Given that each draw a maximum of 60 mA, and there are 256 for a 16x16 grid, over 15 A
+        will be needed. Standard outlets give out 15 A, so we will need to limit the use of white and intense colors for our project.<br>
+      </p>
+
+      <b>Date Reported:</b> 1/17/2024<br>
+      <b>Start Time:</b> 10:00 a.m.<br>
+      <b>Work Time:</b> 4.5 Hours<br>
+      <p>
+        I worked in the lab on determining the hardware and communication protocols so I could determine which board to use. I have
+        tentatively chosen the STM32F4. We decreased the size of our map from a 20x20 hex array to a 16x16 hex array, since it is a power 
+        of two. Our LEDs will be using WS2812Ss and GPIO pins to control each column. Two 16-pin I2C IO Expanders will be used for the 
+        Hall effect sensors. I included all sorts of documentation concerning the various parts and the microcontroller in our Discord. 
+        Landon and I are going to order parts for the LEDs and Hall effect sensors. We acquired an STM32F407 development board to 
+        prototype on. We planned a meeting for this Friday to work on the Functional Specification Report.<br>
+        <img src = "Images\Microcontroller and Peripherals.jpg" width = "200" height = "300"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 1/13/2024 <br>
+      <b>Start Time:</b> 12:00 p.m. <br>
+      <b>Work Time:</b> 0.5 Hours <br>
+      <p>
+        I uploaded a photo of myself to the team website, as well as created a description of myself.<br>
+      </p>
+    </div>
+
+    <button class = "accordion">Week 1</button>
+    <div class = "panel">
+      <b>Date Reported:</b> 1/12/2024<br>
+      <b>Start Time:</b> 9:00 a.m.<br>
+      <b>Work Time:</b> 3 Hours<br>
+      <p>
+        I worked in the lab on finishing the Final Project Report and turned it in. We finalized assignment roles. I am
+        the Hardware lead for this project. I lead the discussion on creating a list of tasks for each person to complete, some individual
+        and some partenered up. Landon and I are to pick a microcontroller, figure out an IDE, and test varioius materials that LEDs can 
+        shine through, as well as test Hall effect sensors. We plan to order these parts soon. The goal is to get this done before 
+        Week 3 ManLab. I still need to finish my portion of the team website.<br>
+        <img src = "Images\Task Divisions.jpg" width = "200" height = "300"></img><br>
+      </p>
+
+      <b>Date Reported:</b> 1/10/2024<br>
+      <b>Start Time:</b> 12:30 p.m.<br>
+      <b>Work Time:</b> 3 Hours<br>
+      <p>
+        I worked in the lab on creating the website and filling out the Final Project Report. We did not finish either. I created a rough 
+        framework for the PSDRs and the Project Description describing the hardware and software going into the project. So far I have 
+        determined that the gameplay, Hall effect sensors, LEDs, keypad, LCD, map generation application, and the USB porting for the map 
+        generation are all good PSDRs. We also planned a meeting for 1/12/2024 for finishing the Final Project Report and the website.<br>
+      </p>
+    </div>
+  </div>
+
+  <footer id="footer" class = "w3-container w3-padding-32">
+    The Dungeon Crawler page last updated on <span id="last-updated"></span>
+  </footer>
+
+  <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } 
+        else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } 
+      });
+    }
+
+    var slideIndex = 0;
+    carousel();
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("slide");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > x.length) {slideIndex = 1}
+      x[slideIndex-1].style.display = "block";
+      setTimeout(carousel, 9000);
+    }
+
+    var currentDate = new Date();
+    var formattedDate = currentDate.toLocaleDateString();
+    var lastUpdatedElement = document.getElementById('last-updated');
+    lastUpdatedElement.textContent = formattedDate;
+  </script>
+</body>
+</html>

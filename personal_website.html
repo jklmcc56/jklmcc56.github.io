@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset = "UTF-8">
+  <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+  <link rel = "stylesheet" href = "https://www.w3schools.com/w3css/3/w3.css">
+  <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <title>Jackson Luna-McCrocklin's Personal Website</title>
+  <style>
+    html {
+      overflow-y: scroll;
+      background-color: rgb(66, 64, 64);
+    }
+
+    body {
+      height: 100vh;
+      padding-bottom: 20px;
+      margin: 0 auto;
+      max-width: 800px;
+      background-color: white;
+    }
+
+    p {
+      width: 700px;
+    }
+
+    .w3-dropdown-hover:hover .w3-dropdown-content {
+      display: block;
+    }
+
+    #footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="w3-bar w3-dark-gray">
+    <a href="index.html" class="w3-button w3-bar-item">Home</a>
+    <div class="w3-dropdown-hover w3-right">
+      <button class="w3-button">Projects</button>
+      <div class="w3-dropdown-content w3-bar-block w3-border" style="right:20;">
+        <a href="dungeon_crawler.html" class="w3-bar-item w3-button">The Dungeon Crawler</a>
+        <a href="personal_website.html" class="w3-bar-item w3-button">Personal Website</a>
+      </div>
+    </div> 
+  </div>
+    
+  <div id="references" class="w3-container w3-padding">
+    <h3 class="w3-border-bottom w3-border-light-grey">Project Description</h3>
+    <p>
+      I created this website myself using HTML, CSS, and a little bit of Javascript. Prior to this, my only experience in web development 
+      was over a decade ago, so I had to relearn everything for building this website. I mainly used W3.CSS for the visual elements based 
+      on a tutorial I found online. This website is in no way supposed to reflect developed professional experience in web development. It 
+      was created to house all of my personal and project information for work purposes. If you find any errors, please email me and I will 
+      attempt to fix it as fast as possible.
+    </p>
+  </div>
+
+  <div id="code" class="w3-container w3-padding">
+    <h3 class="w3-border-bottom w3-border-light-grey">Code</h3>
+    <p>
+      <a href="https://github.com/jklmcc56/Personal-Website">Github Repository</a><br>
+    </p>
+  </div>
+
+  <div id="project_description" class="w3-container w3-padding">
+    <h3 class="w3-border-bottom w3-border-light-grey">References</h3>
+    <p>
+      <a href="https://www.w3schools.com/html/default.asp">HTML Tutorial</a><br>
+      <a href="https://www.w3schools.com/w3css/default.asp">W3.CSS Tutorial</a><br>
+    </p>
+  </div>
+
+  <footer id="footer" class = "w3-container w3-padding-32">
+    Personal Website page last updated on <span id="last-updated"></span>
+  </footer>
+
+  <script>
+    var currentDate = new Date();
+    var formattedDate = currentDate.toLocaleDateString();
+    var lastUpdatedElement = document.getElementById('last-updated');
+    lastUpdatedElement.textContent = formattedDate;
+  </script>
+
+</body>
+</html>
