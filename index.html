@@ -14,7 +14,8 @@
     }
 
     body {
-      height: 100vh;
+      min-height: 100vh;
+      height: 100%;
       padding-bottom: 20px;
       margin: 0 auto;
       max-width: 800px;
@@ -27,6 +28,10 @@
 
     .w3-dropdown-hover:hover .w3-dropdown-content {
       display: block;
+    }
+
+    .content {
+    flex: 1; /* Allow content to take up remaining space */
     }
 
     #footer {
